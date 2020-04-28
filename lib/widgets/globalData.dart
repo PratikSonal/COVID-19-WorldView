@@ -72,7 +72,7 @@ class Statistics extends StatelessWidget {
                 Text(
                   count,
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w200,
                       fontSize: displayWidth * 0.13,
                       color: c1),
                 ),
