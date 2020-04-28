@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../homepage.dart';
 
@@ -19,7 +20,10 @@ class _DynamicListState extends State<DynamicList> {
     double size = MediaQuery.of(context).size.width;
 
     return Card(
+      borderOnForeground: false,
+      color: Color(0xff233656),
       child: Container(
+        //height: size * 0.45,
         height: 160,
         width: MediaQuery.of(context).size.width * 0.9,
         margin: EdgeInsets.all(0),
@@ -27,17 +31,17 @@ class _DynamicListState extends State<DynamicList> {
         child: Row(
           children: <Widget>[
             SizedBox(
-              width: 5,
+              height: size * 0.015,
             ),
             Container(
-              margin: EdgeInsets.all(4),
+              margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.network(
-                    widget.suggestions[widget.index]['countryInfo']['flag'],
-                    //height: 120,
+                  Image(
+                    image: CachedNetworkImageProvider(widget
+                        .suggestions[widget.index]['countryInfo']['flag']),
                     width: MediaQuery.of(context).size.width * 0.27,
                   ),
                 ],
@@ -49,7 +53,7 @@ class _DynamicListState extends State<DynamicList> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: size*0.01 ,
+                  height: size * 0.01,
                 ),
                 Text(
                   Ttext(widget.suggestions[widget.index]['country']),
@@ -62,7 +66,7 @@ class _DynamicListState extends State<DynamicList> {
                   ),
                 ),
                 SizedBox(
-                  height: size*0.015,
+                  height: size * 0.008,
                 ),
                 Expanded(
                   child: Row(
@@ -81,7 +85,7 @@ class _DynamicListState extends State<DynamicList> {
                             widget.suggestions[widget.index]['cases']
                                 .toString(),
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w200,
                                 color: Colors.lightBlue[100],
                                 fontSize: size * 0.06),
                           ),
@@ -100,7 +104,7 @@ class _DynamicListState extends State<DynamicList> {
                             widget.suggestions[widget.index]['active']
                                 .toString(),
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w200,
                                 color: Colors.yellow[100],
                                 fontSize: size * 0.06),
                           ),
@@ -126,7 +130,7 @@ class _DynamicListState extends State<DynamicList> {
                             widget.suggestions[widget.index]['recovered']
                                 .toString(),
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w200,
                                 color: Colors.lightGreenAccent[100],
                                 fontSize: size * 0.06),
                           ),
@@ -145,7 +149,7 @@ class _DynamicListState extends State<DynamicList> {
                             widget.suggestions[widget.index]['deaths']
                                 .toString(),
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
+                                fontWeight: FontWeight.w200,
                                 color: Colors.redAccent[100],
                                 fontSize: size * 0.06),
                           ),

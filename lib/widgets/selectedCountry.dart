@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+
 import './stackChart.dart';
 import 'package:flutter/material.dart';
 import '../homepage.dart';
@@ -57,9 +59,10 @@ class _SelectedCountryState extends State<SelectedCountry> {
                     Container(
                       height: size * 0.25,
                       width: size * 0.4,
-                      child: Image.network(
+                      child: Image(
+                          image: CachedNetworkImageProvider(
                         widget.countryMaxDetail['countryInfo']['flag'],
-                      ),
+                      )),
                     ),
                     Container(
                       height: size * 0.25,
@@ -83,7 +86,7 @@ class _SelectedCountryState extends State<SelectedCountry> {
             : Column(
                 children: <Widget>[
                   SizedBox(
-                    height: size * 0.08,
+                    height: size * 0.05,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
