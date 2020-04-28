@@ -8,6 +8,7 @@ import 'package:http/http.dart' as http;
 import './widgets/globalData.dart';
 import './widgets/link.dart';
 import './widgets/dynamicList.dart';
+import './widgets/pieChart.dart';
 
 class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
@@ -53,39 +54,41 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   generatePieData() async {
     http.Response resp = await http.get('https://corona.lmao.ninja/v2/all');
-    newData = json.decode(resp.body);
-  }
-
-  generateData() async {
-    http.Response resp = await http.get('https://corona.lmao.ninja/v2/all');
     setState(() {
       newData = json.decode(resp.body);
-      var pieData = [
-        Task('Active', (newData['active'] / newData['cases'] * 100),
-            Colors.yellowAccent
-            //Colors.blue
-            ),
-        Task('Recovered', (newData['recovered'] / newData['cases'] * 100),
-            Colors.lightGreenAccent[400]
-            //Colors.green
-            ),
-        Task('Deaths', (newData['deaths'] / newData['cases']) * 100,
-            Colors.deepOrangeAccent[400]
-            //Colors.red
-            ),
-      ];
-
-      seriesPieData.add(charts.Series(
-        data: pieData,
-        domainFn: (Task task, _) => task.task,
-        measureFn: (Task task, _) => task.taskvalue,
-        colorFn: (Task task, _) =>
-            charts.ColorUtil.fromDartColor(task.colorval),
-        labelAccessorFn: (Task row, _) => '${row.taskvalue}',
-        id: 'Chart',
-      ));
     });
   }
+
+//  generateData() async {
+//    http.Response resp = await http.get('https://corona.lmao.ninja/v2/all');
+//    setState(() {
+//      newData = json.decode(resp.body);
+//      var pieData = [
+//        Task('Active', (newData['active'] / newData['cases'] * 100),
+//            Colors.yellowAccent
+//            //Colors.blue
+//            ),
+//        Task('Recovered', (newData['recovered'] / newData['cases'] * 100),
+//            Colors.lightGreenAccent[400]
+//            //Colors.green
+//            ),
+//        Task('Deaths', (newData['deaths'] / newData['cases']) * 100,
+//            Colors.deepOrangeAccent[400]
+//            //Colors.red
+//            ),
+//      ];
+
+//      seriesPieData.add(charts.Series(
+//        data: pieData,
+//        domainFn: (Task task, _) => task.task,
+//        measureFn: (Task task, _) => task.taskvalue,
+//        colorFn: (Task task, _) =>
+//            charts.ColorUtil.fromDartColor(task.colorval),
+//        labelAccessorFn: (Task row, _) => '${row.taskvalue}',
+//        id: 'Chart',
+//      ));
+//    });
+//  }
 
   @override
   void initState() {
@@ -97,7 +100,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     seriesPieData = List<charts.Series<Task, String>>();
     fetchWorldWideData();
     generatePieData();
-    generateData();
+    //generateData();
     fetchCountryData();
     fetchHistory();
   }
@@ -142,7 +145,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               title: Text(
                 'COVID-19  WORLDVIEW',
                 style: TextStyle(
-                    fontSize: MediaQuery.of(context).size.width * 0.055),
+                    fontSize: MediaQuery.of(context).size.width * 0.055,
+                    fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               actions: <Widget>[
@@ -197,7 +201,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             controller: tabBarController,
             children: [
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(left: 2, right: 2),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.99,
                   child: Center(
@@ -233,7 +237,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Colors.cyanAccent[100],
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w500,
                                       fontSize:
                                           MediaQuery.of(context).size.width *
                                               0.075),
@@ -251,36 +255,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                           ),
                                         ),
                                       )
-                                    : Container(
-                                        height:
-                                            MediaQuery.of(context).size.width *
+                                    : Stack(
+                                        children: <Widget>[
+                                          PieChartData(newData),
+                                          Container(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
                                                 0.80,
-                                        width:
-                                            MediaQuery.of(context).size.width *
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
                                                 0.80,
-                                        child: charts.PieChart(
-                                          seriesPieData,
-                                          animate: true,
-                                          animationDuration:
-                                              Duration(milliseconds: 500),
-                                          defaultRenderer:
-                                              charts.ArcRendererConfig(
-                                            strokeWidthPx: 0,
-                                            arcWidth: 20,
-                                            arcRendererDecorators: [
-                                              charts.ArcLabelDecorator(
-                                                outsideLabelStyleSpec:
-                                                    charts.TextStyleSpec(
-                                                  color: charts.Color.white,
-                                                  fontSize: 14,
-                                                ),
-                                                showLeaderLines: false,
-                                                labelPosition: charts
-                                                    .ArcLabelPosition.outside,
-                                              )
-                                            ],
-                                          ),
-                                        ),
+                                            child: Icon(
+                                              FontAwesomeIcons.globeAmericas,
+                                              color: Colors.white60,
+                                              size: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  0.55,
+                                            ),
+                                          )
+                                        ],
                                       ),
                                 SizedBox(
                                   height: 10,
@@ -311,7 +307,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.only(left: 2, right: 2, top: 0, bottom: 0),
                 child: (countryData == null)
                     ? Center(
                         child: Container(
@@ -405,7 +401,11 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 10, right: 10),
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width*0.03 ,
+                    right: MediaQuery.of(context).size.width*0.03,
+                    top: 0,
+                    bottom: 0),
                 child: Container(
                   width: MediaQuery.of(context).size.width * 0.99,
                   child: Center(
