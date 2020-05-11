@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Link extends StatelessWidget {
+class LinkIndia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double h = MediaQuery.of(context).size.height * 0.07;
@@ -10,22 +10,16 @@ class Link extends StatelessWidget {
     return Container(
       child: Column(children: <Widget>[
         redirectPage(
-            'LEARN MORE',
-            'https://www.who.int/emergencies/diseases/novel-coronavirus-2019',
+            'MINISTRY OF HEALTHCARE', 'https://www.mohfw.gov.in/', h, w),
+        redirectPage(
+            'DONATE(PMCARES)', 'https://www.pmindia.gov.in/en/?query', h, w),
+        redirectPage(
+            'WHO REPORTS',
+            'https://www.who.int/india/emergencies/india-situation-report',
             h,
             w),
         redirectPage(
-            'DONATE',
-            'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/donate',
-            h,
-            w),
-        redirectPage(
-            'VIEW HEAT MAP', 'https://coronavirus.jhu.edu/map.html', h, w),
-        redirectPage(
-            'MYTHBUSTERS',
-            'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters',
-            h,
-            w),
+            'NEWS', 'https://www.india.gov.in/news_lists?a878774607', h, w),
       ]),
     );
   }
@@ -41,14 +35,16 @@ Widget redirectPage(String title, String link, double height, double width) {
       height: height,
       width: width,
       //color: Color(0xff233656),
-      color: Color(0xff022c43) ,
+      color: Color(0xff022c43),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Text(
             title,
             style: TextStyle(
-                color: Colors.cyan[200] , fontWeight: FontWeight.bold, fontSize: width*0.025 ),
+                color: Colors.cyan[200],
+                fontWeight: FontWeight.bold,
+                fontSize: width * 0.025),
           )
         ],
       ),

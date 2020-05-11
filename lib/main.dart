@@ -1,29 +1,12 @@
+import 'package:covid19/splashscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'homepage.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'myapp.dart';
 
 void main() {
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'COVID-19 Worldview',
-      theme: ThemeData(
-        primaryColor: Colors.blue,
-      ),
-      home: HomePage(),
-    );
-  }
+  //SystemChrome.setPreferredOrientations([
+  //  DeviceOrientation.portraitUp,
+  //  DeviceOrientation.portraitDown,
+  //]);
+  runApp(Phoenix(child: SplashScreen()));
 }

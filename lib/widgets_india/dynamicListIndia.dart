@@ -1,18 +1,21 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:covid19/pages_india/statelist.dart';
 import 'package:flutter/material.dart';
 
-class DynamicList extends StatefulWidget {
-  List suggestions, countryData;
+class DynamicListIndia extends StatefulWidget {
+  List suggestions, stateData;
+  Map stateDataDetails;
   int index;
 
-  DynamicList(this.suggestions, this.index, this.countryData);
+  DynamicListIndia(
+      this.suggestions, this.index, this.stateData, this.stateDataDetails);
 
   @override
-  _DynamicListState createState() => _DynamicListState();
+  _DynamicListIndiaState createState() => _DynamicListIndiaState();
 }
 
-class _DynamicListState extends State<DynamicList> {
-  _DynamicListState();
+class _DynamicListIndiaState extends State<DynamicListIndia> {
+  _DynamicListIndiaState();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,6 @@ class _DynamicListState extends State<DynamicList> {
         borderRadius: BorderRadius.circular(30),
       ),
       borderOnForeground: false,
-      //color: Color(0xff233656),
       color: Color(0xff115173),
       child: Container(
         //height: size * 0.45,
@@ -45,12 +47,18 @@ class _DynamicListState extends State<DynamicList> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image(
-                    image: CachedNetworkImageProvider(widget
-                        .suggestions[widget.index]['countryInfo']['flag']),
-                    width: size * 0.27,
-                    height: 150,
-                  ),
+                  //Image(
+                  //image: CachedNetworkImageProvider(widget
+                  //    .suggestions[widget.index]['stateInfo']['flag']),
+                  //width: size * 0.27,
+                  //height: 150,
+                  //),
+                  Container(
+                      width: size * 0.27,
+                      height: 150,
+                      child: Image.asset('assets/images/' +
+                          widget.suggestions[widget.index]['state'].toString() +
+                          '.png')),
                 ],
               ),
             ),
@@ -63,13 +71,13 @@ class _DynamicListState extends State<DynamicList> {
                   height: size * 0.01,
                 ),
                 Text(
-                  Ttext(widget.suggestions[widget.index]['country']),
+                  Ttext(widget.suggestions[widget.index]['state']),
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
                     fontSize: customSize(
-                        widget.suggestions[widget.index]['country'], size),
+                        widget.suggestions[widget.index]['state'], size),
                   ),
                 ),
                 SizedBox(
@@ -84,12 +92,15 @@ class _DynamicListState extends State<DynamicList> {
                           Text(
                             'CONFIRMED:',
                             style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.lightBlueAccent,
                                 fontSize: size * 0.035),
                           ),
                           Text(
-                            widget.suggestions[widget.index]['cases']
+                            widget.stateDataDetails['statewise'][getSync(
+                                    widget.suggestions,
+                                    widget.stateDataDetails,
+                                    widget.index)]['confirmed']
                                 .toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w300,
@@ -103,12 +114,15 @@ class _DynamicListState extends State<DynamicList> {
                           Text(
                             'ACTIVE:',
                             style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.yellowAccent[400],
                                 fontSize: size * 0.035),
                           ),
                           Text(
-                            widget.suggestions[widget.index]['active']
+                            widget.stateDataDetails['statewise'][getSync(
+                                    widget.suggestions,
+                                    widget.stateDataDetails,
+                                    widget.index)]['active']
                                 .toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w300,
@@ -129,12 +143,15 @@ class _DynamicListState extends State<DynamicList> {
                           Text(
                             'RECOVERED:',
                             style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.lightGreenAccent[400],
                                 fontSize: size * 0.035),
                           ),
                           Text(
-                            widget.suggestions[widget.index]['recovered']
+                            widget.stateDataDetails['statewise'][getSync(
+                                    widget.suggestions,
+                                    widget.stateDataDetails,
+                                    widget.index)]['recovered']
                                 .toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w300,
@@ -148,12 +165,15 @@ class _DynamicListState extends State<DynamicList> {
                           Text(
                             'DEATHS:',
                             style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.deepOrange,
                                 fontSize: size * 0.035),
                           ),
                           Text(
-                            widget.suggestions[widget.index]['deaths']
+                            widget.stateDataDetails['statewise'][getSync(
+                                    widget.suggestions,
+                                    widget.stateDataDetails,
+                                    widget.index)]['deaths']
                                 .toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.w300,
@@ -181,8 +201,10 @@ double customSize(String text, double size) {
     return size * 0.065;
   } else if (text.length > 14 && text.length <= 20) {
     return size * 0.05;
-  } else {
+  } else if (text.length > 20 && text.length <= 30) {
     return size * 0.04;
+  }else{
+    return size * 0.028;
   }
 }
 

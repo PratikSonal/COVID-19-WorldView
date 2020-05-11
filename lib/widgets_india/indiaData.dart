@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-class GlobalData extends StatelessWidget {
-
-  final Map worldData;
-  GlobalData({Key key, this.worldData}) : super(key: key);
+class IndiaData extends StatelessWidget {
+  final Map indiaData;
+  IndiaData({Key key, this.indiaData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,32 +12,27 @@ class GlobalData extends StatelessWidget {
         children: <Widget>[
           Statistics(
             title: 'CONFIRMED',
-            count: worldData['cases'].toString(),
-            //c1: Colors.lightBlue[100],
+            count: indiaData['statewise'][0]['confirmed'].toString(),
             c1: Colors.cyan[100],
             c2: Colors.lightBlueAccent,
           ),
           Statistics(
             title: '  ACTIVE  ',
-            count: worldData['active'].toString(),
-            //c1: Colors.yellow[100] ,
+            count: indiaData['statewise'][0]['active'].toString(),
             c1: Colors.cyan[100],
-            c2: Colors.yellowAccent[400] ,
+            c2: Colors.yellowAccent[400],
           ),
           Statistics(
             title: 'RECOVERED',
-            count: worldData['recovered'].toString(),
-            //c1: Colors.lightGreenAccent[100],
+            count: indiaData['statewise'][0]['recovered'].toString(),
             c1: Colors.cyan[100],
             c2: Colors.lightGreenAccent[400],
           ),
           Statistics(
             title: ' DEATHS ',
-            count: worldData['deaths'].toString(),
-            //c1: Colors.redAccent[100] ,
+            count: indiaData['statewise'][0]['deaths'].toString(),
             c1: Colors.cyan[100],
-            //c2: Colors.red,
-            c2: Colors.deepOrange ,
+            c2: Colors.deepOrange,
           ),
         ],
       ),
@@ -52,8 +46,7 @@ class Statistics extends StatelessWidget {
   final String title;
   final String count;
 
-  const Statistics(
-      {Key key, this.c1, this.c2, this.title, this.count})
+  const Statistics({Key key, this.c1, this.c2, this.title, this.count})
       : super(key: key);
 
   @override
@@ -63,8 +56,8 @@ class Statistics extends StatelessWidget {
     return Center(
       child: Container(
         margin: EdgeInsets.all(1),
-        height: displayWidth * 0.27 ,
-        width: displayWidth * 0.9 ,
+        height: displayWidth * 0.27,
+        width: displayWidth * 0.9,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

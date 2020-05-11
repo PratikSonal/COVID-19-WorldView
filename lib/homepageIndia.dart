@@ -1,18 +1,17 @@
-import 'package:covid19/apiresources/apiTemplate.dart';
+import 'package:covid19/apiresources/apiTemplateIndia.dart';
 import 'package:covid19/pages/loading.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomePageIndia extends StatefulWidget {
   @override
-  HomePageState createState() => HomePageState();
+  _HomePageIndiaState createState() => _HomePageIndiaState();
 }
 
-class HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin<HomePage> {
-
+class _HomePageIndiaState extends State<HomePageIndia> with AutomaticKeepAliveClientMixin<HomePageIndia>  {
   static Future<Scaffold> getData() {
+
     var data1 =
-        fetch('http://corona.lmao.ninja/v2/all', 30, 1, 1, 'homepage', 5, 1);
+        fetchIndia( 30, 1, 1, 'India', 5, 1);
     return data1;
   }
 

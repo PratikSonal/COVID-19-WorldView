@@ -194,7 +194,7 @@ class _StackChartState extends State<StackChart> {
     return Container(
       height: MediaQuery.of(context).size.width * 0.8,
       width: MediaQuery.of(context).size.width * 0.95,
-      padding: EdgeInsets.all(1),
+      //padding: EdgeInsets.all(1),
       child: widget.countryStack == null ? SizedBox() : lineChart(),
     );
   }

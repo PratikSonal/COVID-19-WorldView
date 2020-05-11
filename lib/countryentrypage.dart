@@ -2,18 +2,16 @@ import 'package:covid19/apiresources/apiTemplate.dart';
 import 'package:covid19/pages/loading.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class CountryLoadingPage extends StatefulWidget {
   @override
-  HomePageState createState() => HomePageState();
+  _CountryLoadingPageState createState() => _CountryLoadingPageState();
 }
 
-class HomePageState extends State<HomePage>
-    with AutomaticKeepAliveClientMixin<HomePage> {
-
-  static Future<Scaffold> getData() {
-    var data1 =
-        fetch('http://corona.lmao.ninja/v2/all', 30, 1, 1, 'homepage', 5, 1);
-    return data1;
+class _CountryLoadingPageState extends State<CountryLoadingPage> with AutomaticKeepAliveClientMixin<CountryLoadingPage> {
+  Future<Scaffold> getData2() {
+    var data2 = fetch('http://corona.lmao.ninja/v2/countries', 30, 1, 1,
+        'CountryLoadingPage', 5, 2);
+    return data2;
   }
 
   @override
@@ -24,10 +22,10 @@ class HomePageState extends State<HomePage>
         //  home: Scaffold(
         //    backgroundColor: Color(0xff202f4e),
         //    appBar: AppBar(
-        //      title: Text('PAGE 1'),
+        //      title: Text('PAGE 2'),
         //      backgroundColor: Color(0xff233656),
         //    ),
-        //    body:
+        //   body:
         FutureBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.data == null) {
@@ -36,7 +34,7 @@ class HomePageState extends State<HomePage>
         }
         return snapshot.data;
       },
-      future: getData(),
+      future: getData2(),
       //    ),
       //  ),
     );
