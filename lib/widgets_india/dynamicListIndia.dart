@@ -17,6 +17,17 @@ class DynamicListIndia extends StatefulWidget {
 class _DynamicListIndiaState extends State<DynamicListIndia> {
   _DynamicListIndiaState();
 
+  fetchImage(var suggestions, var index) {
+    var img;
+    setState(() {
+      img = Image.asset(
+        'assets/images/' + suggestions[index]['state'].toString() + '.png',
+        fit: BoxFit.scaleDown,
+      );
+    });
+    return img == null ? CircularProgressIndicator() : img;
+  }
+
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
@@ -54,11 +65,21 @@ class _DynamicListIndiaState extends State<DynamicListIndia> {
                   //height: 150,
                   //),
                   Container(
-                      width: size * 0.27,
-                      height: 150,
-                      child: Image.asset('assets/images/' +
-                          widget.suggestions[widget.index]['state'].toString() +
-                          '.png')),
+                    width: size * 0.27,
+                    height: 150,
+                    child: (widget.suggestions == null || widget.index == null)
+                        ? Center(
+                            child: CircularProgressIndicator(),
+                          )
+                        : Image.asset(
+                            'assets/images/' +
+                                widget.suggestions[widget.index]['statecode']
+                                    .toString() +
+                                '.png',
+                            fit: BoxFit.scaleDown,
+                          ),
+                    //fetchImage(widget.suggestions, widget.index),
+                  ),
                 ],
               ),
             ),
@@ -203,7 +224,7 @@ double customSize(String text, double size) {
     return size * 0.05;
   } else if (text.length > 20 && text.length <= 30) {
     return size * 0.04;
-  }else{
+  } else {
     return size * 0.028;
   }
 }

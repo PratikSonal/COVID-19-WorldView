@@ -11,15 +11,15 @@ class LinkIndia extends StatelessWidget {
       child: Column(children: <Widget>[
         redirectPage(
             'MINISTRY OF HEALTHCARE', 'https://www.mohfw.gov.in/', h, w),
+        redirectPage('DONATE (PMCARES)',
+            'https://www.pmindia.gov.in/en/?query', h, w),
         redirectPage(
-            'DONATE(PMCARES)', 'https://www.pmindia.gov.in/en/?query', h, w),
-        redirectPage(
-            'WHO REPORTS',
+            'WHO REPORTS ON INDIA',
             'https://www.who.int/india/emergencies/india-situation-report',
             h,
             w),
         redirectPage(
-            'NEWS', 'https://www.india.gov.in/news_lists?a878774607', h, w),
+            'NEWS HEADLINES', 'https://www.india.gov.in/news_lists?a878774607', h, w),
       ]),
     );
   }

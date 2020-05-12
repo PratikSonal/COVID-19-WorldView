@@ -102,7 +102,8 @@ Future<Scaffold> fetchIndia(
       //throw ApiTempException(cause: 'c', action: 'd');
       return Scaffold(
         backgroundColor: Color(0xff022c43),
-        body: ErrorPage('Network error', 'Please connect to a network and try again'),
+        body: ErrorPage(
+            'Network error', 'Please connect to a network and try again'),
       );
     }
   } else {
@@ -193,7 +194,7 @@ void _checkResponseCode(response) {
 
 //static
 Future _sleep(int millis) {
-  return Future.delayed(Duration(seconds: millis));
+  return Future.delayed(Duration(milliseconds: millis * 10));
 }
 //}
 

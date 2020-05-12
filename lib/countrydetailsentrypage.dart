@@ -21,9 +21,9 @@ class _CountryDetailsState extends State<CountryDetails>
       'https://corona.lmao.ninja/v2/historical/' + widget.countryStackIndex,
       30,
       1,
-      1,
+      0,
       'CountryDetails$s',
-      1,
+      60,
       widget.countryMaxDetails,
     );
     print('verify2' + 'CountryDetails$s');

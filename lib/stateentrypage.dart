@@ -10,7 +10,7 @@ class StateLoadingPage extends StatefulWidget {
 class _StateLoadingPageState extends State<StateLoadingPage>
     with AutomaticKeepAliveClientMixin<StateLoadingPage> {
   Future<Scaffold> getData2() {
-    var data2 = fetchIndia(30, 1, 1, 'India', 5, 2);
+    var data2 = fetchIndia(30, 1, 0, 'India', 15, 2);
     return data2;
   }
 
@@ -30,5 +30,5 @@ class _StateLoadingPageState extends State<StateLoadingPage>
 
   @override
   // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => false;
 }

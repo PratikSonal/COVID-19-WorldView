@@ -125,7 +125,7 @@ class MyAppState extends State<MyApp> {
                 _currentIndex = index;
               });
               pageController.animateToPage(index,
-                  duration: Duration(milliseconds: 350), curve: Curves.ease);
+                  duration: Duration(milliseconds: 300), curve: Curves.ease);
             },
           ),
         ),

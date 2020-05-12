@@ -97,5 +97,5 @@ Future<bool> _shouldFetch(int time, String saveName) async {
 }
 
 Future _sleep(int sec) {
-  return Future.delayed(Duration(seconds: sec));
+  return Future.delayed(Duration(milliseconds: sec * 10));
 }

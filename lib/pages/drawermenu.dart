@@ -41,9 +41,9 @@ class _DrawerMenuState extends State<DrawerMenu> {
                 //SizedBox(
                 //  height: MediaQuery.of(context).size.height * 0.05,
                 //),
-                //Divider(
-                //  color: Colors.cyan[100] ,
-                //),
+                Divider(
+                  color: Colors.transparent,
+                ),
                 ListTile(
                   title: Text(
                     'ABOUT',
@@ -60,7 +60,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   },
                 ),
                 Divider(
-                  color: Colors.cyan[100],
+                  color: Colors.transparent,
                 ),
                 ListTile(
                   title: Text(
@@ -74,7 +74,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                       'https://github.com/PratikSonal/COVID-19-WorldView'),
                 ),
                 Divider(
-                  color: Colors.cyan[100],
+                  color: Colors.transparent,
                 ),
               ],
             ),

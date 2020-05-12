@@ -24,12 +24,13 @@ class _SelectedCountryDetailsState extends State<SelectedCountryDetails>
 
   Future getStackData() {
     countryStack = fetchChartData(
-        'https://corona.lmao.ninja/v2/historical/$countryStack',
-        30,
-        1,
-        1,
-        'stack$countryStack',
-        1);
+      'https://corona.lmao.ninja/v2/historical/$countryStack',
+      30,
+      1,
+      0,
+      'stack$countryStack',
+      60,
+    );
     //print('hi' + countryStack.toString());
     return countryStack;
   }
@@ -76,7 +77,8 @@ class _SelectedCountryDetailsState extends State<SelectedCountryDetails>
           } else if (snapshot.data == null3) {
             return Scaffold(
               backgroundColor: Color(0xff022c43),
-              body: ErrorPage('Network error', 'Please connect to a network and try again'),
+              body: ErrorPage(
+                  'Network error', 'Please connect to a network and try again'),
             );
           } else {
             return Scaffold(

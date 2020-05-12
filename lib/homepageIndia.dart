@@ -7,11 +7,10 @@ class HomePageIndia extends StatefulWidget {
   _HomePageIndiaState createState() => _HomePageIndiaState();
 }
 
-class _HomePageIndiaState extends State<HomePageIndia> with AutomaticKeepAliveClientMixin<HomePageIndia>  {
+class _HomePageIndiaState extends State<HomePageIndia>
+    with AutomaticKeepAliveClientMixin<HomePageIndia> {
   static Future<Scaffold> getData() {
-
-    var data1 =
-        fetchIndia( 30, 1, 1, 'India', 5, 1);
+    var data1 = fetchIndia(30, 1, 0, 'India', 15, 1);
     return data1;
   }
 
@@ -54,5 +53,5 @@ class _HomePageIndiaState extends State<HomePageIndia> with AutomaticKeepAliveCl
 
   @override
   // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => false;
 }

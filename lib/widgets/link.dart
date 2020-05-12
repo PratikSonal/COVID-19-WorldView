@@ -15,12 +15,12 @@ class Link extends StatelessWidget {
             h,
             w),
         redirectPage(
-            'DONATE',
+            'DONATE (WHO)',
             'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/donate',
             h,
             w),
         redirectPage(
-            'VIEW HEAT MAP', 'https://coronavirus.jhu.edu/map.html', h, w),
+            'VIEW HEAT MAP (JHU)', 'https://coronavirus.jhu.edu/map.html', h, w),
         redirectPage(
             'MYTHBUSTERS',
             'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters',

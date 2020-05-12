@@ -40,7 +40,7 @@ class _SplashDataState extends State<SplashData> {
   int callBack = 0;
 
   String url(var x) {
-    return 'https://github.com/KejariwalAyush/NCOV-19/releases/download/' +
+    return 'https://github.com/PratikSonal/COVID-19-WorldView/releases/download/' +
         x.toString() +
         '/app.apk';
   }
@@ -48,9 +48,9 @@ class _SplashDataState extends State<SplashData> {
   fetchData() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
     currentVersion = packageInfo.version;
-    print(currentVersion);
-    final Response response =
-        await get('https://github.com/KejariwalAyush/NCOV-19/releases/latest');
+    print('Current version is ' + currentVersion);
+    final Response response = await get(
+        'https://github.com/PratikSonal/COVID-19-WorldView/releases/latest');
     setState(() {
       if (response.statusCode == 200) {
         var document = parse(response.body);
@@ -63,12 +63,19 @@ class _SplashDataState extends State<SplashData> {
         }
         var dec = jsonDecode(json.encode(linkMap));
         latestVersion = dec[6]['title'];
-        print(latestVersion);
+        print('Latest version is ' + latestVersion);
         print(linkMap.toString());
         if (latestVersion != currentVersion) {
           isVisible = true;
           callBack = 1;
+          //} else if (latestVersion == '→') {
+          //  Navigator.pushReplacement(
+          //    context,
+          //    MaterialPageRoute(builder: (context) => MyApp()),
+          //  );
+          //  callBack = 2;
         } else {
+          print('Nope');
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => MyApp()),
@@ -76,6 +83,7 @@ class _SplashDataState extends State<SplashData> {
           callBack = 2;
         }
       } else {
+        print('Executed');
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => MyApp()),

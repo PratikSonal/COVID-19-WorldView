@@ -156,7 +156,7 @@ void _checkResponseCode(response) {
 
 //static
 Future _sleep(int sec) {
-  return Future.delayed(Duration(seconds: sec));
+  return Future.delayed(Duration(milliseconds: sec * 10));
 }
 //}
 

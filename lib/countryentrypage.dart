@@ -7,9 +7,10 @@ class CountryLoadingPage extends StatefulWidget {
   _CountryLoadingPageState createState() => _CountryLoadingPageState();
 }
 
-class _CountryLoadingPageState extends State<CountryLoadingPage> with AutomaticKeepAliveClientMixin<CountryLoadingPage> {
+class _CountryLoadingPageState extends State<CountryLoadingPage>
+    with AutomaticKeepAliveClientMixin<CountryLoadingPage> {
   Future<Scaffold> getData2() {
-    var data2 = fetch('http://corona.lmao.ninja/v2/countries', 30, 1, 1,
+    var data2 = fetch('http://corona.lmao.ninja/v2/countries', 30, 5, 0,
         'CountryLoadingPage', 5, 2);
     return data2;
   }
@@ -53,5 +54,5 @@ class _CountryLoadingPageState extends State<CountryLoadingPage> with AutomaticK
 
   @override
   // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => false;
 }

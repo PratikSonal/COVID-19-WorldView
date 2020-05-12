@@ -21,6 +21,7 @@ class SelectedStateDetailsState extends State<SelectedStateDetails>
   static int counter = 0;
 
   String s = StatePageState.stateName; //'Odisha';
+  String sc = StatePageState.stateCode;
 
   TabController tabControllerState;
 
@@ -90,6 +91,9 @@ class SelectedStateDetailsState extends State<SelectedStateDetails>
           : Container(
               child: ListView(
                 children: <Widget>[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.02,
+                  ),
                   Center(
                     child: Row(
                       children: <Widget>[
@@ -101,7 +105,7 @@ class SelectedStateDetailsState extends State<SelectedStateDetails>
                           //  widget.countryMaxDetail['countryInfo']['flag'],
                           //)),
                           child: Image.asset(
-                              'assets/images/' + s.toString() + '.png'),
+                              'assets/images/' + sc.toString() + '.png'),
                         ),
                         Container(
                           height: MediaQuery.of(context).size.width * 0.25,
@@ -577,6 +581,7 @@ class SelectedStateDetailsState extends State<SelectedStateDetails>
                   child: Center(
                     child: Text(
                       data2['zones'][i]['district'].toString(),
+                      textAlign: TextAlign.center,
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

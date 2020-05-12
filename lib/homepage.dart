@@ -12,7 +12,7 @@ class HomePageState extends State<HomePage>
 
   static Future<Scaffold> getData() {
     var data1 =
-        fetch('http://corona.lmao.ninja/v2/all', 30, 1, 1, 'homepage', 5, 1);
+        fetch('http://corona.lmao.ninja/v2/all', 30, 1, 0, 'homepage', 5, 1);
     return data1;
   }
 
@@ -55,5 +55,5 @@ class HomePageState extends State<HomePage>
 
   @override
   // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => false;
 }

@@ -22,7 +22,7 @@ class StatePageState extends State<StatePage> {
   List stateData, suggestions;
   Map stateDataDetails;
 
-  static String stateName;
+  static String stateName, stateCode ;
 
   static var stateMaxDetails, stateStackIndex, stateStack;
 
@@ -123,7 +123,7 @@ class StatePageState extends State<StatePage> {
               child: ListView.builder(
                   controller: listController,
                   physics: BouncingScrollPhysics(),
-                  shrinkWrap: true,
+                  shrinkWrap: false,
                   itemCount: (stateData == null || stateDataDetails == null)
                       ? 0
                       : suggestions.length,
@@ -133,7 +133,7 @@ class StatePageState extends State<StatePage> {
                           setState(() {
                             SelectedStateDetailsState.counter = 0;
                             stateName = suggestions[index]['state'].toString();
-
+                            stateCode = suggestions[index]['statecode'].toString();
                             //stateMaxDetails = suggestions[index];
                             //stateStackIndex = suggestions[index]['state'];
                           });
