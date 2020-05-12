@@ -1,4 +1,5 @@
 import 'package:covid19/pages/about.dart';
+import 'package:covid19/splashscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -10,6 +11,9 @@ class DrawerMenu extends StatefulWidget {
 class _DrawerMenuState extends State<DrawerMenu> {
   @override
   Widget build(BuildContext context) {
+    double aspectRatio = double.parse(
+        (MediaQuery.of(context).size.width / MediaQuery.of(context).size.height)
+            .toStringAsFixed(1));
     return Column(
       children: <Widget>[
         Stack(
@@ -75,6 +79,20 @@ class _DrawerMenuState extends State<DrawerMenu> {
                 ),
                 Divider(
                   color: Colors.transparent,
+                ),
+                SizedBox(
+                  height: aspectRatio == 0.6
+                      ? MediaQuery.of(context).size.height * 0.4
+                      : MediaQuery.of(context).size.height * 0.5,
+                ),
+                Center(
+                  child: Text(
+                    'Version  ' + SplashDataState.currentVersion.toString(),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                    ),
+                  ),
                 ),
               ],
             ),

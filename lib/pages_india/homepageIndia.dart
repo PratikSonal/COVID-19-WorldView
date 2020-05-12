@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:covid19/tabbar/tabbar1.dart';
 import 'package:covid19/tabbar/tabbar3.dart';
 import 'package:covid19/widgets/link.dart';
 import 'package:covid19/widgets_india/indiaData.dart';
@@ -42,8 +43,11 @@ class _IndiaPageState extends State<IndiaPage> {
   Widget build(BuildContext context) {
     return SwipeDetector(
       onSwipeLeft: () => ThirdTabState.tabBarController1.animateTo(1),
-      onSwipeRight: () => MyAppState.pageController.animateToPage(0,
-          duration: Duration(milliseconds: 150), curve: Curves.ease),
+      onSwipeRight: () {
+        MyAppState.pageController.animateToPage(0,
+            duration: Duration(milliseconds: 150), curve: Curves.ease);
+        FirstTabState.tabBarController1.animateTo(2);
+      },
       child: Padding(
         padding: const EdgeInsets.only(left: 2, right: 2),
         child: Container(

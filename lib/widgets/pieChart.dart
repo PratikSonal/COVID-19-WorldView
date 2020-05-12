@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class PieChartData extends StatefulWidget {
+class PieChartData extends StatelessWidget {
   var pieChartData;
 
   PieChartData(this.pieChartData);
-
-  @override
-  _PieChartDataState createState() => _PieChartDataState();
-}
-
-class _PieChartDataState extends State<PieChartData> {
   List<charts.Series> seriesPieData;
 
   List<charts.Series<Task, String>> seriesPieChart(var newData) {
@@ -42,18 +36,19 @@ class _PieChartDataState extends State<PieChartData> {
     ];
   }
 
-  void initState() {
-    super.initState();
-    setState(() {
-      seriesPieData = seriesPieChart(widget.pieChartData);
-    });
-  }
+  //void initState() {
+  //  super.initState();
+  //  setState(() {
+  //    seriesPieData = seriesPieChart(pieChartData);
+  //  });
+  //}
 
   pieChart() {
     return charts.PieChart(
-      seriesPieData,
+      //seriesPieData,
+      seriesPieChart(pieChartData),
       animate: true,
-      animationDuration: Duration(milliseconds: 500),
+      animationDuration: Duration(milliseconds: 350),
       defaultRenderer: charts.ArcRendererConfig(
         strokeWidthPx: 0,
         arcWidth: 10,
@@ -76,7 +71,7 @@ class _PieChartDataState extends State<PieChartData> {
     return Container(
       height: MediaQuery.of(context).size.width * 0.80,
       width: MediaQuery.of(context).size.width * 0.80,
-      child: widget.pieChartData == null ? SizedBox() : pieChart(),
+      child: pieChartData == null ? SizedBox() : pieChart(),
     );
   }
 }

@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class PieChartIndia extends StatelessWidget {
-  var indiaData;
+class PieChartData extends StatefulWidget {
+  var pieChartData;
 
-  PieChartIndia(this.indiaData);
+  PieChartData(this.pieChartData);
+
+  @override
+  _PieChartDataState createState() => _PieChartDataState();
+}
+
+class _PieChartDataState extends State<PieChartData> {
   List<charts.Series> seriesPieData;
 
   List<charts.Series<Task, String>> seriesPieChart(var newData) {
     var pieData = [
-      Task(
-          'Active',
-          (int.parse(newData['statewise'][0]['active']) /
-              int.parse(newData['statewise'][0]['confirmed']) *
-              100),
+      Task('Active', (newData['active'] / newData['cases'] * 100),
           Colors.yellowAccent
           //Colors.blue
           ),
-      Task(
-          'Recovered',
-          (int.parse(newData['statewise'][0]['recovered']) /
-              int.parse(newData['statewise'][0]['confirmed']) *
-              100),
+      Task('Recovered', (newData['recovered'] / newData['cases'] * 100),
           Colors.lightGreenAccent[400]
           //Colors.green
           ),
-      Task(
-          'Deaths',
-          (int.parse(newData['statewise'][0]['deaths']) /
-                  int.parse(newData['statewise'][0]['confirmed'])) *
-              100,
+      Task('Deaths', (newData['deaths'] / newData['cases']) * 100,
           Colors.deepOrangeAccent[400]
           //Colors.red
           ),
@@ -48,17 +42,16 @@ class PieChartIndia extends StatelessWidget {
     ];
   }
 
-  //void initState() {
-  //  super.initState();
-  //  setState(() {
-  //    seriesPieData = seriesPieChart(indiaData);
-  //  });
-  //}
+  void initState() {
+    super.initState();
+    setState(() {
+      seriesPieData = seriesPieChart(widget.pieChartData);
+    });
+  }
 
   pieChart() {
     return charts.PieChart(
-      //seriesPieData,
-      seriesPieChart(indiaData),
+      seriesPieData,
       animate: true,
       animationDuration: Duration(milliseconds: 150),
       defaultRenderer: charts.ArcRendererConfig(
@@ -83,7 +76,7 @@ class PieChartIndia extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.width * 0.80,
       width: MediaQuery.of(context).size.width * 0.80,
-      child: indiaData == null ? SizedBox() : pieChart(),
+      child: widget.pieChartData == null ? SizedBox() : pieChart(),
     );
   }
 }

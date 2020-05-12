@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
-class PieChartIndia extends StatelessWidget {
+class PieChartIndia extends StatefulWidget {
   var indiaData;
 
   PieChartIndia(this.indiaData);
+
+  @override
+  _PieChartIndiaState createState() => _PieChartIndiaState();
+}
+
+class _PieChartIndiaState extends State<PieChartIndia> {
   List<charts.Series> seriesPieData;
 
   List<charts.Series<Task, String>> seriesPieChart(var newData) {
@@ -48,17 +54,16 @@ class PieChartIndia extends StatelessWidget {
     ];
   }
 
-  //void initState() {
-  //  super.initState();
-  //  setState(() {
-  //    seriesPieData = seriesPieChart(indiaData);
-  //  });
-  //}
+  void initState() {
+    super.initState();
+    setState(() {
+      seriesPieData = seriesPieChart(widget.indiaData);
+    });
+  }
 
   pieChart() {
     return charts.PieChart(
-      //seriesPieData,
-      seriesPieChart(indiaData),
+      seriesPieData,
       animate: true,
       animationDuration: Duration(milliseconds: 150),
       defaultRenderer: charts.ArcRendererConfig(
@@ -83,7 +88,7 @@ class PieChartIndia extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.width * 0.80,
       width: MediaQuery.of(context).size.width * 0.80,
-      child: indiaData == null ? SizedBox() : pieChart(),
+      child: widget.indiaData == null ? SizedBox() : pieChart(),
     );
   }
 }

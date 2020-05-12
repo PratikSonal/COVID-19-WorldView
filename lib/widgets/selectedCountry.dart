@@ -17,7 +17,9 @@ class _SelectedCountryState extends State<SelectedCountry> {
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
-
+    double aspectRatio = double.parse(
+        (MediaQuery.of(context).size.width / MediaQuery.of(context).size.height)
+            .toStringAsFixed(1));
     return Padding(
       padding: EdgeInsets.only(
           left: MediaQuery.of(context).size.width * 0.02,
@@ -33,7 +35,8 @@ class _SelectedCountryState extends State<SelectedCountry> {
               ? Container(
                   child: Column(
                     children: <Widget>[
-                      SizedBox(height: size * 0.7),
+                      SizedBox(
+                          height: aspectRatio == 0.6 ? size * 0.4 : size * 0.7),
                       Center(
                         child: Text(
                           'NO COUNTRY SELECTED',
@@ -100,7 +103,7 @@ class _SelectedCountryState extends State<SelectedCountry> {
                           style: TextStyle(
                               fontSize:
                                   MediaQuery.of(context).size.width * 0.06,
-                              color: Colors.cyan[100] ),
+                              color: Colors.cyan[100]),
                         ),
                         Text(
                           widget.countryMaxDetail['cases'].toString(),

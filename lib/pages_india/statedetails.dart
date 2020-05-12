@@ -47,6 +47,9 @@ class SelectedStateDetailsState extends State<SelectedStateDetails>
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
+    double aspectRatio = double.parse(
+        (MediaQuery.of(context).size.width / MediaQuery.of(context).size.height)
+            .toStringAsFixed(1));
     return Padding(
       padding: EdgeInsets.only(
           left: MediaQuery.of(context).size.width * 0.01,
@@ -63,7 +66,8 @@ class SelectedStateDetailsState extends State<SelectedStateDetails>
                     bottom: 0),
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: size * 0.7),
+                    SizedBox(
+                        height: aspectRatio == 0.6 ? size * 0.4 : size * 0.7),
                     Center(
                       child: Text(
                         'NO STATE SELECTED',
