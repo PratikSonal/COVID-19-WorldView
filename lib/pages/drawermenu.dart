@@ -38,7 +38,8 @@ class _DrawerMenuState extends State<DrawerMenu> {
           children: <Widget>[
             Container(
               height: MediaQuery.of(context).size.height * 0.75,
-              color: Color(0xff212121),
+              //color: Color(0xff212121),
+              color: Colors.black,
             ),
             Column(
               children: <Widget>[

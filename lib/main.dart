@@ -18,6 +18,26 @@ void main() {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]).then((_) {
-    runApp(Phoenix(child: SplashScreen()));
+    runApp(Phoenix(child: COVID()));
   });
+}
+
+class COVID extends StatefulWidget {
+  @override
+  _COVIDState createState() => _COVIDState();
+}
+
+class _COVIDState extends State<COVID> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'COVID-19 WorldView',
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        accentColor: Colors.white,
+      ),
+      home: SplashScreen(),
+    );
+  }
 }

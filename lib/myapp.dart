@@ -4,6 +4,7 @@ import 'package:covid19/pages_india/homepageIndia.dart';
 import 'package:covid19/pages_india/statedetails.dart';
 import 'package:covid19/pages_india/statedetailsPrototype.dart';
 import 'package:covid19/pages_india/statelist.dart';
+import 'package:covid19/splashscreen.dart';
 import 'package:covid19/tabbar/tabbar3.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
@@ -20,24 +21,33 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   int _currentIndex = 0;
 
-  final tabs = [
-    FirstTab(),
-    Scaffold(
-        backgroundColor: Colors.amber, body: Container(child: Text('empty 1'))),
-  ];
+  //final tabs = [
+  //  FirstTab(),
+  //  Scaffold(
+  //      backgroundColor: Colors.amber, body: Container(child: Text('empty 1'))),
+  //];
 
   static PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'COVID-19 WorldView',
-      theme: ThemeData(
-        primaryColor: Colors.blue,
-        accentColor: Colors.white,
-      ),
-      home: Scaffold(
+    return
+        //MaterialApp(
+        //  debugShowCheckedModeBanner: false,
+        //  title: 'COVID-19 WorldView',
+        //  theme: ThemeData(
+        //    primaryColor: Colors.blue,
+        //    accentColor: Colors.white,
+        //  ),
+        // home:
+        WillPopScope(
+      onWillPop: () {
+        return Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => SplashScreen()),
+        );
+      },
+      child: Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(50),
           child: AppBar(
@@ -131,5 +141,7 @@ class MyAppState extends State<MyApp> {
         ),
       ),
     );
+    //  ,
+    //);
   }
 }

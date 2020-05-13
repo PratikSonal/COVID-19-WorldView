@@ -57,60 +57,62 @@ class _SelectedCountryDetailsState extends State<SelectedCountryDetails>
     //    ),
     //  ),
     //);
-    return SwipeDetector(
-      onSwipeRight: () => FirstTabState.tabBarController1.animateTo(1),
-      onSwipeLeft: () => MyAppState.pageController.animateToPage(1,
-          duration: Duration(milliseconds: 150), curve: Curves.ease),
-      child: FutureBuilder(
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.data == null) {
-            print('Loading...');
-            return Scaffold(
-              backgroundColor: Color(0xff022c43),
-              body: LoadingPage(),
-            );
-          } else if (snapshot.data == null2) {
-            return Scaffold(
-              backgroundColor: Color(0xff022c43),
-              body: ErrorPage('Connection timed out', 'Please try again'),
-            );
-          } else if (snapshot.data == null3) {
-            return Scaffold(
-              backgroundColor: Color(0xff022c43),
-              body: ErrorPage(
-                  'Network error', 'Please connect to a network and try again'),
-            );
-          } else {
-            return Scaffold(
-              //backgroundColor: Color(0xff202f4e),
-              backgroundColor: Color(0xff053f5e),
-              body: Padding(
-                padding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.01,
-                    right: MediaQuery.of(context).size.width * 0.01,
-                    top: 0,
-                    bottom: 0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.99,
-                  child: Center(
-                    child: ListView(
-                      children: <Widget>[
-                        SelectedCountry(countryMaxDetail, snapshot.data),
-                        SizedBox(height: 20),
-                      ],
-                    ),
+    return
+        //SwipeDetector(
+        //  onSwipeRight: () => FirstTabState.tabBarController1.animateTo(1),
+        //  onSwipeLeft: () => MyAppState.pageController.animateToPage(1,
+        //      duration: Duration(milliseconds: 150), curve: Curves.ease),
+        //  child:
+        FutureBuilder(
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.data == null) {
+          print('Loading...');
+          return Scaffold(
+            backgroundColor: Color(0xff022c43),
+            body: LoadingPage(),
+          );
+        } else if (snapshot.data == null2) {
+          return Scaffold(
+            backgroundColor: Color(0xff022c43),
+            body: ErrorPage('Connection timed out', 'Please try again'),
+          );
+        } else if (snapshot.data == null3) {
+          return Scaffold(
+            backgroundColor: Color(0xff022c43),
+            body: ErrorPage(
+                'Network error', 'Please connect to a network and try again'),
+          );
+        } else {
+          return Scaffold(
+            //backgroundColor: Color(0xff202f4e),
+            backgroundColor: Color(0xff053f5e),
+            body: Padding(
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.01,
+                  right: MediaQuery.of(context).size.width * 0.01,
+                  top: 0,
+                  bottom: 0),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.99,
+                child: Center(
+                  child: ListView(
+                    children: <Widget>[
+                      SelectedCountry(countryMaxDetail, snapshot.data),
+                      SizedBox(height: 20),
+                    ],
                   ),
                 ),
               ),
-            );
-          }
+            ),
+          );
+        }
 
-          //return snapshot.data;
-        },
-        future: getStackData(),
-        //    ),
-        //  ),
-      ),
+        //return snapshot.data;
+      },
+      future: getStackData(),
+      //    ),
+      //  ),
+      //),
     );
   }
 

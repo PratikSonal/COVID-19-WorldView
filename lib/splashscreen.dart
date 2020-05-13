@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:covid19/SelectCategory.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:covid19/myapp.dart';
 import 'package:flutter/cupertino.dart';
@@ -41,9 +42,9 @@ class SplashDataState extends State<SplashData> {
   List links;
   List<Map<String, String>> linkMap;
   bool isVisible = false;
-  //String versionNumber = '2.5.0';
 
   int callBack = 0;
+  bool animateTop = false;
 
   String url(var x) {
     return 'https://github.com/PratikSonal/COVID-19-WorldView/releases/download/' +
@@ -77,27 +78,81 @@ class SplashDataState extends State<SplashData> {
           if (latestVersion != currentVersion) {
             isVisible = true;
             callBack = 1;
-            //} else if (latestVersion == '→') {
-            //  Navigator.pushReplacement(
-            //    context,
-            //    MaterialPageRoute(builder: (context) => MyApp()),
-            //  );
-            //  callBack = 2;
           } else {
             print('Latest update installed');
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => MyApp()),
-            );
+            //Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => MyApp()),);
             callBack = 2;
+            Future.delayed(Duration(milliseconds: 1200), () {
+              setState(() {
+                animateTop = true;
+              });
+              //Navigator.pushReplacement(
+              //  context,
+              //  MaterialPageRoute(builder: (context) => MyApp()),
+              //);
+            });
+
+            Future.delayed(Duration(milliseconds: 1650), () {
+              Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                      transitionDuration: Duration(milliseconds: 500),
+                      transitionsBuilder: (BuildContext context,
+                          Animation<double> animation,
+                          Animation<double> secAnimation,
+                          Widget child) {
+                        animation:
+                        CurvedAnimation(parent: animation, curve: Curves.ease);
+                        return ScaleTransition(
+                          alignment: Alignment.center,
+                          scale: animation,
+                          child: child,
+                        );
+                      },
+                      pageBuilder: (BuildContext context,
+                          Animation<double> animation,
+                          Animation<double> secAnimation) {
+                        return SelectCategory();
+                      }));
+            });
           }
         } else {
           print('Executed');
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => MyApp()),
-          );
+          //Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => MyApp()),);
           callBack = 2;
+          Future.delayed(Duration(milliseconds: 1200), () {
+            setState(() {
+              animateTop = true;
+            });
+            //Navigator.pushReplacement(
+            //  context,
+            //  MaterialPageRoute(builder: (context) => MyApp()),
+            //);
+          });
+
+          Future.delayed(Duration(milliseconds: 1650), () {
+            Navigator.push(
+                context,
+                PageRouteBuilder(
+                    transitionDuration: Duration(milliseconds: 500),
+                    transitionsBuilder: (BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secAnimation,
+                        Widget child) {
+                      animation:
+                      CurvedAnimation(parent: animation, curve: Curves.ease);
+                      return ScaleTransition(
+                        alignment: Alignment.center,
+                        scale: animation,
+                        child: child,
+                      );
+                    },
+                    pageBuilder: (BuildContext context,
+                        Animation<double> animation,
+                        Animation<double> secAnimation) {
+                      return SelectCategory();
+                    }));
+          });
         }
       });
     } on TimeoutException catch (e) {
@@ -125,49 +180,110 @@ class SplashDataState extends State<SplashData> {
 
   @override
   Widget build(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double containerSize = deviceWidth * 0.4;
+
+    double aspectRatio = double.parse(
+        (MediaQuery.of(context).size.width / MediaQuery.of(context).size.height)
+            .toStringAsFixed(1));
+    print('Aspect ratio is ' + aspectRatio.toString());
+
     return Scaffold(
       backgroundColor: Color(0xff022c43),
       //backgroundColor: Color(0xff212121),
       body: Stack(
         children: <Widget>[
-          Center(
-            child: Container(
-              height: MediaQuery.of(context).size.width * 0.4,
-              width: MediaQuery.of(context).size.width * 0.4,
-              child: Image.asset('assets/images/Logo.png'),
+          AnimatedPositioned(
+            bottom: callBack == 2
+                ? (animateTop == true
+                    ? MediaQuery.of(context).size.height * 1 //0.85
+                    : (aspectRatio == 0.6
+                        ? MediaQuery.of(context).size.height * 0.49
+                        : MediaQuery.of(context).size.height * 0.49))
+                : (aspectRatio == 0.6
+                    ? MediaQuery.of(context).size.height * 0.34
+                    : MediaQuery.of(context).size.height * 0.38),
+            right: MediaQuery.of(context).size.width * 0.15,
+            duration: Duration(milliseconds: animateTop == true ? 500 : 1000),
+            curve: Curves.easeOut,
+            child: Text(
+              'COVID-19 \nWORLDVIEW',
+              style: TextStyle(
+                  color: Colors.cyan[100],
+                  fontSize: MediaQuery.of(context).size.width * 0.08),
             ),
           ),
-          Center(
+          Positioned(
+            top: aspectRatio == 0.6 ? MediaQuery.of(context).size.height * 0.55 : MediaQuery.of(context).size.height * 0.52,
+            right: MediaQuery.of(context).size.width * 0.02,
             child: Container(
-              height: MediaQuery.of(context).size.width * 0.5,
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: SpinKitDualRing(
-                color: Colors.cyan[100],
-                size: MediaQuery.of(context).size.width * 0.5,
+              height: MediaQuery.of(context).size.height * 0.1,
+              width: MediaQuery.of(context).size.width * 0.7,
+              color: Color(0xff022c43),
+            ),
+          ),
+          AnimatedPositioned(
+            top: animateTop == true
+                ? MediaQuery.of(context).size.height * -0.12 //0.05
+                : aspectRatio == 0.6 ? MediaQuery.of(context).size.height * 0.38 : MediaQuery.of(context).size.height * 0.4,
+            left: callBack == 2
+                ? MediaQuery.of(context).size.width * 0.08
+                : MediaQuery.of(context).size.width * 0.3,
+            duration: Duration(milliseconds: animateTop == true ? 500 : 800),
+            curve: Curves.easeOut,
+            child: Center(
+              child: AnimatedContainer(
+                //height: MediaQuery.of(context).size.width * 0.4,
+                //width: MediaQuery.of(context).size.width * 0.4,
+                height: callBack == 2 ? containerSize * 0.6 : containerSize,
+                width: callBack == 2 ? containerSize * 0.6 : containerSize,
+                duration: (Duration(seconds: 1)),
+                child: Image.asset('assets/images/Logo.png'),
               ),
             ),
           ),
           Center(
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.95,
+            child: Visibility(
+              visible: callBack == 2 ? false : true,
+              child: Container(
+                height: MediaQuery.of(context).size.width * 0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
+                child: SpinKitDualRing(
+                  color: Colors.cyan[100],
+                  size: MediaQuery.of(context).size.width * 0.5,
                 ),
-                Container(
-                  child: currentVersion == null
-                      ? SizedBox(
-                          height: 0,
-                        )
-                      : Text(
-                          'Version ' + currentVersion,
-                          style: TextStyle(
-                            color: Colors.cyan[100],
-                            fontSize: MediaQuery.of(context).size.width * 0.04,
-                          ),
-                        ),
-                ),
-              ],
+              ),
             ),
+          ),
+          AnimatedPositioned(
+            duration: Duration(milliseconds: 500),
+            bottom: animateTop == true
+                ? MediaQuery.of(context).size.height * -0.03
+                : MediaQuery.of(context).size.height * 0.03,
+            left: MediaQuery.of(context).size.width * 0.38,
+            child:
+                //Center(
+                //child: Column(
+                //children: <Widget>[
+                //SizedBox(
+                //  height: MediaQuery.of(context).size.height * 0.95,
+                //),
+                Container(
+              child: currentVersion == null
+                  ? SizedBox(
+                      height: 0,
+                    )
+                  : Text(
+                      'Version ' + currentVersion,
+                      style: TextStyle(
+                        color: Colors.cyan[100],
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
+                      ),
+                    ),
+            ),
+            //],
+            //),
+            //),
           ),
           Center(
             child: Visibility(
@@ -333,7 +449,6 @@ class _ErrorPageSplashState extends State<ErrorPageSplash> {
                   borderRadius: BorderRadius.circular(25.0),
                   side: BorderSide(color: Colors.cyan[100])),
               onPressed: () => Phoenix.rebirth(context),
-              //Navigator.push(context,PageRouteBuilder(pageBuilder: (context, animation1, animation2) => MyApp(),),),
             ),
           ),
         ],

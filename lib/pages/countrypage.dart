@@ -1,5 +1,6 @@
 import 'package:covid19/apiresources/apiStackChart.dart';
 import 'package:covid19/countrydetailsentrypage.dart';
+import 'package:covid19/pages_mod/firstpage.dart';
 import 'package:covid19/tabbar/tabbar1.dart';
 import 'package:covid19/widgets/dynamicList.dart';
 import 'package:flutter/material.dart';
@@ -148,7 +149,7 @@ class CountryPageState extends State<CountryPage> {
                             //print('rememberMe' + countryStackIndex);
                           });
 
-                          FirstTabState.tabBarController1.animateTo(2);
+                          FirstPageState.tabBarController1.animateTo(2);
 
                           FocusScope.of(context).requestFocus(new FocusNode());
 

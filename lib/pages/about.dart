@@ -24,7 +24,38 @@ class _AboutPageState extends State<AboutPage> {
           child: Column(
             children: <Widget>[
               SizedBox(
-                height: displayHeight * 0.04,
+                height: MediaQuery.of(context).size.height * 0.15,
+              ),
+              Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      height: MediaQuery.of(context).size.width * 0.3,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      child: Image.asset('assets/images/Logo.png'),
+                    ),
+                    Text(
+                      'COVID-19\nWORLDVIEW',
+                      style: TextStyle(
+                        color: Colors.cyanAccent,
+                        fontSize: MediaQuery.of(context).size.width * 0.07,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  'By Pratik Sonal',
+                  style: TextStyle(
+                    color: Colors.cyan[100],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: displayHeight * 0.1,
               ),
               Center(
                 child: Text(
@@ -79,13 +110,16 @@ class _AboutPageState extends State<AboutPage> {
               ),
               Center(
                 child: Text(
-                  'At last, it’s a dangerous world right now. Stay home, stay safe.',
+                  'At last, it’s a dangerous world out there. Stay home, stay safe.',
                   style: TextStyle(
                     color: Colors.cyan[100],
                     fontSize: displayWidth * 0.04,
                   ),
                   textAlign: TextAlign.justify,
                 ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2 ,
               ),
             ],
           ),

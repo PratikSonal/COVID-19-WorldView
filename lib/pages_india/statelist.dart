@@ -1,4 +1,5 @@
 import 'package:covid19/pages_india/statedetails.dart';
+import 'package:covid19/pages_mod/secondpage.dart';
 import 'package:covid19/tabbar/tabbar1.dart';
 import 'package:covid19/tabbar/tabbar3.dart';
 import 'package:covid19/widgets_india/dynamicListIndia.dart';
@@ -137,7 +138,7 @@ class StatePageState extends State<StatePage> {
                             //stateMaxDetails = suggestions[index];
                             //stateStackIndex = suggestions[index]['state'];
                           });
-                          ThirdTabState.tabBarController1.animateTo(2);
+                          SecondPageState.tabBarController1.animateTo(2);
                           FocusScope.of(context).requestFocus(new FocusNode());
                           //FirstTabState.tabBarController1.animateTo(2);
                           //print('verify' + suggestions[index]['state']);
