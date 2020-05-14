@@ -12,7 +12,7 @@ class CountryLoadingPage extends StatefulWidget {
 class _CountryLoadingPageState extends State<CountryLoadingPage>
     with AutomaticKeepAliveClientMixin<CountryLoadingPage> {
   Future<Scaffold> getData2() {
-    var data2 = fetch('http://corona.lmao.ninja/v2/countries', 30, 5, 0,
+    var data2 = fetch('http://corona.lmao.ninja/v2/countries', 30, 5, 10,
         'CountryLoadingPage', 5, 2);
     return data2;
   }

@@ -2,22 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:intl/intl.dart';
 
-//class StackChart extends StatefulWidget {
-//  var countryStack;
-//
-//  StackChart(this.countryStack);
-//
-//  @override
-//  _StackChartState createState() => _StackChartState();
-//}
-
-class //_StackChartState
-    StackChart extends //State<StackChart>
-    StatelessWidget {
+class StackChart extends StatefulWidget {
   var countryStack;
 
   StackChart(this.countryStack);
 
+  @override
+  _StackChartState createState() => _StackChartState();
+}
+
+class _StackChartState extends State<StackChart> {
   List<charts.Series> seriesList;
 
   static List<charts.Series<CLine, int>> createStackData(var historyData) {
@@ -151,19 +145,16 @@ class //_StackChartState
     ];
   }
 
-  //void initState() {
-  //  super.initState();
-  //  setState(() {
-  //    seriesList = createStackData(countryStack);
-  //  });
-  //}
-
-  //seriesList = createStackData(countryStack);
+  void initState() {
+    super.initState();
+    setState(() {
+      seriesList = createStackData(widget.countryStack);
+    });
+  }
 
   lineChart() {
     return charts.LineChart(
-      //seriesList,
-      createStackData(countryStack),
+      seriesList,
       primaryMeasureAxis: charts.NumericAxisSpec(
           renderSpec: charts.GridlineRendererSpec(
         labelStyle: charts.TextStyleSpec(
@@ -204,7 +195,7 @@ class //_StackChartState
       height: MediaQuery.of(context).size.width * 0.8,
       width: MediaQuery.of(context).size.width * 0.95,
       //padding: EdgeInsets.all(1),
-      child: countryStack == null ? SizedBox() : lineChart(),
+      child: widget.countryStack == null ? SizedBox() : lineChart(),
     );
   }
 }

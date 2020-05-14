@@ -10,7 +10,7 @@ class HomePageIndia extends StatefulWidget {
 class _HomePageIndiaState extends State<HomePageIndia>
     with AutomaticKeepAliveClientMixin<HomePageIndia> {
   static Future<Scaffold> getData() {
-    var data1 = fetchIndia(30, 1, 0, 'India', 15, 1);
+    var data1 = fetchIndia(30, 1, 10, 'India', 15, 1);
     return data1;
   }
 

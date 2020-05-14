@@ -81,10 +81,10 @@ class _SelectCategoryState extends State<SelectCategory>
               //color: Colors.blue,
               height: MediaQuery.of(context).size.height * 0.05,
               child: Text(
-                'Select a category to know more',
+                'Click on view to know more',
                 style: TextStyle(
                   color: Colors.cyan[50],
-                  fontSize: MediaQuery.of(context).size.width * 0.055,
+                  fontSize: MediaQuery.of(context).size.width * 0.065,
                 ),
               ),
             ),
@@ -124,22 +124,16 @@ class _SelectCategoryState extends State<SelectCategory>
                       //),
                       SizedBox(
                         height: aspectRatio == 0.6
-                            ? MediaQuery.of(context).size.height * 0.02
-                            : MediaQuery.of(context).size.height * 0.04,
+                            ? MediaQuery.of(context).size.height * 0.04
+                            : MediaQuery.of(context).size.height * 0.06,
                       ),
-                      Text(
-                        'WORLD ',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.tealAccent,
-                          fontSize: MediaQuery.of(context).size.width * 0.1,
-                        ),
-                      ),
-                      SizedBox(
-                        height: aspectRatio == 0.6
-                            ? MediaQuery.of(context).size.height * 0.005
-                            : MediaQuery.of(context).size.height * 0.04,
-                      ),
+                      //Text(
+                      //  'WORLD ',textAlign: TextAlign.center,style: TextStyle(color: Colors.tealAccent,fontSize: MediaQuery.of(context).size.width * 0.1,
+                      //  ),
+                      //),
+                      //SizedBox(
+                      //  height: aspectRatio == 0.6? MediaQuery.of(context).size.height * 0.005: MediaQuery.of(context).size.height * 0.04,
+                      //),
                       Text(
                         'See COVID-19\'s impact around the world ',
                         textAlign: TextAlign.center,
@@ -150,24 +144,24 @@ class _SelectCategoryState extends State<SelectCategory>
                       ),
                       SizedBox(
                         height: aspectRatio == 0.6
-                            ? MediaQuery.of(context).size.height * 0.02
-                            : MediaQuery.of(context).size.height * 0.04,
+                            ? MediaQuery.of(context).size.height * 0.04
+                            : MediaQuery.of(context).size.height * 0.06,
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.width * 0.1,
-                        width: MediaQuery.of(context).size.width * 0.35,
+                        height: MediaQuery.of(context).size.width * 0.15,
+                        width: MediaQuery.of(context).size.width * 0.45,
                         child: RaisedButton(
                           child: Text(
-                            'WORLD',
+                            'VIEW',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize:
-                                  MediaQuery.of(context).size.width * 0.05,
+                                  MediaQuery.of(context).size.width * 0.1,
                             ),
                           ),
                           color: Color(0xff14ffec),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.0),
+                              borderRadius: BorderRadius.circular(35.0),
                               side: BorderSide(color: Colors.cyan[100])),
                           onPressed: () => Navigator.push(
                             context,
@@ -190,22 +184,22 @@ class _SelectCategoryState extends State<SelectCategory>
                       ),
                       SizedBox(
                         height: aspectRatio == 0.6
-                            ? MediaQuery.of(context).size.height * 0.02
-                            : MediaQuery.of(context).size.height * 0.04,
+                            ? MediaQuery.of(context).size.height * 0.04
+                            : MediaQuery.of(context).size.height * 0.06,
                       ),
-                      Text(
-                        'INDIA',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.tealAccent,
-                          fontSize: MediaQuery.of(context).size.width * 0.1,
-                        ),
-                      ),
-                      SizedBox(
-                        height: aspectRatio == 0.6
-                            ? MediaQuery.of(context).size.height * 0.005
-                            : MediaQuery.of(context).size.height * 0.04,
-                      ),
+                      //Text(
+                      //  'INDIA',
+                      //  textAlign: TextAlign.center,
+                      //  style: TextStyle(
+                      //    color: Colors.tealAccent,
+                      //    fontSize: MediaQuery.of(context).size.width * 0.1,
+                      //  ),
+                      //),
+                      //SizedBox(
+                      //  height: aspectRatio == 0.6
+                      //      ? MediaQuery.of(context).size.height * 0.005
+                      //      : MediaQuery.of(context).size.height * 0.04,
+                      //),
                       Text(
                         'See the statistics of COVID-19 in India',
                         textAlign: TextAlign.center,
@@ -216,24 +210,24 @@ class _SelectCategoryState extends State<SelectCategory>
                       ),
                       SizedBox(
                         height: aspectRatio == 0.6
-                            ? MediaQuery.of(context).size.height * 0.02
-                            : MediaQuery.of(context).size.height * 0.04,
+                            ? MediaQuery.of(context).size.height * 0.04
+                            : MediaQuery.of(context).size.height * 0.06,
                       ),
                       Container(
-                        height: MediaQuery.of(context).size.width * 0.1,
-                        width: MediaQuery.of(context).size.width * 0.35,
+                        height: MediaQuery.of(context).size.width * 0.15,
+                        width: MediaQuery.of(context).size.width * 0.45,
                         child: RaisedButton(
                           child: Text(
-                            'INDIA',
+                            'VIEW',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize:
-                                  MediaQuery.of(context).size.width * 0.05,
+                                  MediaQuery.of(context).size.width * 0.1,
                             ),
                           ),
                           color: Color(0xff14ffec),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(25.0),
+                              borderRadius: BorderRadius.circular(35.0),
                               side: BorderSide(color: Colors.cyan[100])),
                           onPressed: () => Navigator.push(
                             context,

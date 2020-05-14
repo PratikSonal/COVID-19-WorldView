@@ -214,7 +214,9 @@ class SplashDataState extends State<SplashData> {
             ),
           ),
           Positioned(
-            top: aspectRatio == 0.6 ? MediaQuery.of(context).size.height * 0.55 : MediaQuery.of(context).size.height * 0.52,
+            top: aspectRatio == 0.6
+                ? MediaQuery.of(context).size.height * 0.55
+                : MediaQuery.of(context).size.height * 0.52,
             right: MediaQuery.of(context).size.width * 0.02,
             child: Container(
               height: MediaQuery.of(context).size.height * 0.1,
@@ -225,7 +227,9 @@ class SplashDataState extends State<SplashData> {
           AnimatedPositioned(
             top: animateTop == true
                 ? MediaQuery.of(context).size.height * -0.12 //0.05
-                : aspectRatio == 0.6 ? MediaQuery.of(context).size.height * 0.38 : MediaQuery.of(context).size.height * 0.4,
+                : aspectRatio == 0.6
+                    ? MediaQuery.of(context).size.height * 0.38
+                    : MediaQuery.of(context).size.height * 0.4,
             left: callBack == 2
                 ? MediaQuery.of(context).size.width * 0.08
                 : MediaQuery.of(context).size.width * 0.3,
@@ -320,11 +324,47 @@ class SplashDataState extends State<SplashData> {
                           actions: <Widget>[
                             FlatButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => MyApp()),
-                                  );
+                                  //Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => MyApp()),);
+                                  setState(() {
+                                    isVisible = false;
+                                    callBack = 2;
+                                  });
+                                  Future.delayed(Duration(milliseconds: 1200),
+                                      () {
+                                    setState(() {
+                                      animateTop = true;
+                                    });
+                                  });
+
+                                  Future.delayed(Duration(milliseconds: 1650),
+                                      () {
+                                    Navigator.push(
+                                        context,
+                                        PageRouteBuilder(
+                                            transitionDuration:
+                                                Duration(milliseconds: 220),
+                                            transitionsBuilder: (BuildContext
+                                                    context,
+                                                Animation<double> animation,
+                                                Animation<double> secAnimation,
+                                                Widget child) {
+                                              animation:
+                                              CurvedAnimation(
+                                                  parent: animation,
+                                                  curve: Curves.ease);
+                                              return ScaleTransition(
+                                                alignment: Alignment.center,
+                                                scale: animation,
+                                                child: child,
+                                              );
+                                            },
+                                            pageBuilder: (BuildContext context,
+                                                Animation<double> animation,
+                                                Animation<double>
+                                                    secAnimation) {
+                                              return SelectCategory();
+                                            }));
+                                  });
                                 },
                                 child: Text(
                                   'Later',

@@ -27,7 +27,7 @@ class _SelectedCountryDetailsState extends State<SelectedCountryDetails>
       'https://corona.lmao.ninja/v2/historical/$countryStack',
       30,
       1,
-      0,
+      50,
       'stack$countryStack',
       60,
     );

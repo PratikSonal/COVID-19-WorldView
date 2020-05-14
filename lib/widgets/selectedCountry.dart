@@ -245,7 +245,22 @@ class _SelectedCountryState extends State<SelectedCountry> {
                             ),
                             height: MediaQuery.of(context).size.height * 0.4,
                           )
-                        : (widget.countryStack['message'] != null
+                        :
+                        //(widget.countryStack['message'] != null
+                        //    ? SizedBox(
+                        //        height:
+                        //            MediaQuery.of(context).size.height * 0.3,
+                        //        child: Center(
+                        //          child: Text(
+                        //            'Nothing else to show',
+                        //            style: TextStyle(
+                        //                fontSize: size * 0.055,
+                        //                color: Colors.white60),
+                        //          ),
+                        //        ),
+                        //      )
+                        //    :
+                        (widget.countryStack['timeline'] == null
                             ? SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height * 0.3,
