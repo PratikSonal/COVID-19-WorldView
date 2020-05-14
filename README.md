@@ -2,10 +2,21 @@
 # COVID-19 WORLDVIEW
 
 Track the international statistics of the pandemic. Get a detailed view of the number of comfirmed cases, recoveries, deaths, progression curves and other stats for each affect country.
+New: Added data for India's states and district details.
+
+## Screenshots
+![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Content_World.PNG)
+![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Content_India.PNG)
+
+## Attributes
+* Country-wise statistics
+* Progression curve for the past 30 days for each country
+* Dedicated page for indian states
+* District-wise progression data and zone
 
 ## Sources
 
-All of the data is pulled from http://corona.lmao.ninja.
+Data for the world is pulled from http://corona.lmao.ninja , data for India is pulled from https://api.covid19india.org .
 
 ## Run The Code
 
