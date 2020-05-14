@@ -1,3 +1,4 @@
+![icon](DisplayAssets/HeadLine.png)
 # COVID-19 WORLDVIEW
 
 Track the international statistics of the pandemic. Get a detailed view of the number of comfirmed cases, recoveries, deaths, progression curves and other stats for each affect country.
