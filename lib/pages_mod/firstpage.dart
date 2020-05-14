@@ -34,12 +34,14 @@ class FirstPageState extends State<FirstPage>
 
     return WillPopScope(
       onWillPop: () {
-        Navigator.push(
-          context,
-          CupertinoPageRoute(
-            builder: (context) => SelectCategory(),
-          ),
-        );
+        if (tabBarController1.index == 0) {
+          //Navigator.push(context,CupertinoPageRoute(builder: (context) => SelectCategory(),),);
+          Navigator.of(context).pop();
+        } else if (tabBarController1.index == 1) {
+          tabBarController1.animateTo(0);
+        } else if (tabBarController1.index == 2) {
+          tabBarController1.animateTo(1);
+        }
       },
       child: Scaffold(
         appBar:
@@ -55,8 +57,7 @@ class FirstPageState extends State<FirstPage>
             //color: Color(0xff49beb7),
             //child:
             PreferredSize(
-          preferredSize:
-              Size.fromHeight(preferredSize),
+          preferredSize: Size.fromHeight(preferredSize),
           child: AppBar(
             elevation: 5,
             title: Text(

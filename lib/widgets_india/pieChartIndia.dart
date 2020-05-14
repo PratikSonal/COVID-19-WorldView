@@ -60,10 +60,11 @@ class PieChartIndia extends StatelessWidget {
       //seriesPieData,
       seriesPieChart(indiaData),
       animate: true,
-      animationDuration: Duration(milliseconds: 150),
+      animationDuration: Duration(milliseconds: 800),
       defaultRenderer: charts.ArcRendererConfig(
         strokeWidthPx: 0,
         arcWidth: 10,
+        startAngle: 5.5,
         arcRendererDecorators: [
           charts.ArcLabelDecorator(
             outsideLabelStyleSpec: charts.TextStyleSpec(

@@ -1,6 +1,8 @@
 import 'package:covid19/apiresources/apiTemplate.dart';
 import 'package:covid19/pages/loading.dart';
+import 'package:covid19/pages_mod/firstpage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class CountryLoadingPage extends StatefulWidget {
   @override
@@ -17,17 +19,7 @@ class _CountryLoadingPageState extends State<CountryLoadingPage>
 
   @override
   Widget build(BuildContext context) {
-    return
-        //MaterialApp(
-        //  debugShowCheckedModeBanner: false,
-        //  home: Scaffold(
-        //    backgroundColor: Color(0xff202f4e),
-        //    appBar: AppBar(
-        //      title: Text('PAGE 2'),
-        //      backgroundColor: Color(0xff233656),
-        //    ),
-        //   body:
-        FutureBuilder(
+    return FutureBuilder(
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.data == null) {
           print('Loading...');

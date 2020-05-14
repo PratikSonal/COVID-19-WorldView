@@ -66,6 +66,10 @@ class CountryPageState extends State<CountryPage> {
 
   @override
   Widget build(BuildContext context) {
+    double aspectRatio = double.parse(
+        (MediaQuery.of(context).size.width / MediaQuery.of(context).size.height)
+            .toStringAsFixed(1));
+
     return Padding(
       padding: const EdgeInsets.only(left: 2, right: 2),
       child: Column(
@@ -75,8 +79,11 @@ class CountryPageState extends State<CountryPage> {
           ),
           Container(
             //color: Color(0xff233656),
-            color: Color(0xff053f5e),
-            height: MediaQuery.of(context).size.height * 0.07,
+            //color: Color(0xff053f5e),
+            color: Colors.transparent,
+            height: aspectRatio == 0.6
+                ? MediaQuery.of(context).size.height * 0.1
+                : MediaQuery.of(context).size.height * 0.07,
             child: TextField(
               style: TextStyle(
                   fontSize: MediaQuery.of(context).size.width * 0.065,
@@ -107,11 +114,14 @@ class CountryPageState extends State<CountryPage> {
                   color: Colors.white,
                 ),
                 suffix: IconButton(
-                  icon: Icon(Icons.clear),
-                  iconSize: 20,
-                  alignment: Alignment.bottomRight,
-                  onPressed: null,
-                ),
+                    icon: Icon(Icons.clear),
+                    color: Colors.white,
+                    iconSize: 20,
+                    alignment: Alignment.bottomRight,
+                    onPressed: () {
+                      filterSearchResults('');
+                      editingController.clear();
+                    }),
                 //border: OutlineInputBorder(
                 //  borderSide: BorderSide(
                 //    color: Colors.white,

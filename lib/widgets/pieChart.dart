@@ -48,10 +48,11 @@ class PieChartData extends StatelessWidget {
       //seriesPieData,
       seriesPieChart(pieChartData),
       animate: true,
-      animationDuration: Duration(milliseconds: 350),
+      animationDuration: Duration(milliseconds: 800),
       defaultRenderer: charts.ArcRendererConfig(
         strokeWidthPx: 0,
         arcWidth: 10,
+        startAngle: 5.5,
         arcRendererDecorators: [
           charts.ArcLabelDecorator(
             outsideLabelStyleSpec: charts.TextStyleSpec(

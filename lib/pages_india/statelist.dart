@@ -23,7 +23,7 @@ class StatePageState extends State<StatePage> {
   List stateData, suggestions;
   Map stateDataDetails;
 
-  static String stateName, stateCode ;
+  static String stateName, stateCode;
 
   static var stateMaxDetails, stateStackIndex, stateStack;
 
@@ -61,6 +61,10 @@ class StatePageState extends State<StatePage> {
 
   @override
   Widget build(BuildContext context) {
+    double aspectRatio = double.parse(
+        (MediaQuery.of(context).size.width / MediaQuery.of(context).size.height)
+            .toStringAsFixed(1));
+
     return Padding(
       padding: const EdgeInsets.only(left: 2, right: 2),
       child: Column(
@@ -70,8 +74,9 @@ class StatePageState extends State<StatePage> {
           ),
           Container(
             //color: Color(0xff233656),
-            color: Color(0xff053f5e),
-            height: MediaQuery.of(context).size.height * 0.07,
+            //color: Color(0xff053f5e),
+            color: Colors.transparent,
+            height: aspectRatio == 0.6 ? MediaQuery.of(context).size.height * 0.1 : MediaQuery.of(context).size.height * 0.07,
             child: Container(
               child: TextField(
                 style: TextStyle(
@@ -103,11 +108,14 @@ class StatePageState extends State<StatePage> {
                     color: Colors.white,
                   ),
                   suffix: IconButton(
-                    icon: Icon(Icons.clear),
-                    iconSize: 20,
-                    alignment: Alignment.bottomRight,
-                    onPressed: null,
-                  ),
+                      icon: Icon(Icons.clear),
+                      iconSize: 20,
+                      color: Colors.white,
+                      alignment: Alignment.bottomRight,
+                      onPressed: () {
+                        filterSearchResults('');
+                        editingController.clear();
+                      }),
                   //border: OutlineInputBorder(
                   //  borderSide: BorderSide(
                   //    color: Colors.white,
@@ -134,7 +142,8 @@ class StatePageState extends State<StatePage> {
                           setState(() {
                             SelectedStateDetailsState.counter = 0;
                             stateName = suggestions[index]['state'].toString();
-                            stateCode = suggestions[index]['statecode'].toString();
+                            stateCode =
+                                suggestions[index]['statecode'].toString();
                             //stateMaxDetails = suggestions[index];
                             //stateStackIndex = suggestions[index]['state'];
                           });

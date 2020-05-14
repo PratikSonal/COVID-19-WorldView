@@ -39,7 +39,7 @@ class _AboutPageState extends State<AboutPage> {
                       'COVID-19\nWORLDVIEW',
                       style: TextStyle(
                         color: Colors.cyanAccent,
-                        fontSize: MediaQuery.of(context).size.width * 0.07,
+                        fontSize: MediaQuery.of(context).size.width * 0.09,
                       ),
                     ),
                   ],
@@ -55,7 +55,7 @@ class _AboutPageState extends State<AboutPage> {
                 ),
               ),
               SizedBox(
-                height: displayHeight * 0.1,
+                height: displayHeight * 0.15,
               ),
               Center(
                 child: Text(

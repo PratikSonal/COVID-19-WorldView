@@ -96,7 +96,7 @@ class SplashDataState extends State<SplashData> {
               Navigator.push(
                   context,
                   PageRouteBuilder(
-                      transitionDuration: Duration(milliseconds: 500),
+                      transitionDuration: Duration(milliseconds: 220),
                       transitionsBuilder: (BuildContext context,
                           Animation<double> animation,
                           Animation<double> secAnimation,
@@ -134,7 +134,7 @@ class SplashDataState extends State<SplashData> {
             Navigator.push(
                 context,
                 PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 500),
+                    transitionDuration: Duration(milliseconds: 220),
                     transitionsBuilder: (BuildContext context,
                         Animation<double> animation,
                         Animation<double> secAnimation,
@@ -209,7 +209,7 @@ class SplashDataState extends State<SplashData> {
             child: Text(
               'COVID-19 \nWORLDVIEW',
               style: TextStyle(
-                  color: Colors.cyan[100],
+                  color: Colors.cyanAccent,
                   fontSize: MediaQuery.of(context).size.width * 0.08),
             ),
           ),

@@ -33,12 +33,14 @@ class SecondPageState extends State<SecondPage>
         : MediaQuery.of(context).size.height * 0.08;
     return WillPopScope(
       onWillPop: () {
-        Navigator.push(
-          context,
-          CupertinoPageRoute(
-            builder: (context) => SelectCategory(),
-          ),
-        );
+        if (tabBarController1.index == 0) {
+          //Navigator.push(context,CupertinoPageRoute(builder: (context) => SelectCategory(), ),);
+          Navigator.of(context).pop();
+        } else if (tabBarController1.index == 1) {
+          tabBarController1.animateTo(0);
+        } else if (tabBarController1.index == 2) {
+          tabBarController1.animateTo(1);
+        }
       },
       child: Scaffold(
         appBar:
@@ -86,7 +88,7 @@ class SecondPageState extends State<SecondPage>
                 Container(
                   height: 20,
                   child: Text(
-                    'COUNTRIES',
+                    'STATES',
                     style: TextStyle(color: Colors.cyan[100]),
                   ),
                 ),

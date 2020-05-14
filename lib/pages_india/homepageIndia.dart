@@ -41,135 +41,122 @@ class _IndiaPageState extends State<IndiaPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SwipeDetector(
-      onSwipeLeft: () => ThirdTabState.tabBarController1.animateTo(1),
-      onSwipeRight: () {
-        MyAppState.pageController.animateToPage(0,
-            duration: Duration(milliseconds: 150), curve: Curves.ease);
-        FirstTabState.tabBarController1.animateTo(2);
-      },
-      child: Padding(
-        padding: const EdgeInsets.only(left: 2, right: 2),
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.99,
-          child: Center(
-            child: ListView(
-              children: <Widget>[
-                SizedBox(
-                  height: 20,
-                ),
-                (indiaData == null)
-                    ? Center(
-                        child: Column(
-                          children: <Widget>[
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.3,
+    return Padding(
+      padding: const EdgeInsets.only(left: 2, right: 2),
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.99,
+        child: Center(
+          child: ListView(
+            children: <Widget>[
+              SizedBox(
+                height: 20,
+              ),
+              (indiaData == null)
+                  ? Center(
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.3,
+                          ),
+                          Container(
+                            height: MediaQuery.of(context).size.width * 0.5,
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: CircularProgressIndicator(
+                              backgroundColor: Colors.cyanAccent[100],
                             ),
-                            Container(
-                              height: MediaQuery.of(context).size.width * 0.5,
-                              width: MediaQuery.of(context).size.width * 0.5,
-                              child: CircularProgressIndicator(
-                                backgroundColor: Colors.cyanAccent[100],
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : Center(
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              'INDIA AT GLANCE',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.cyanAccent[100],
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: MediaQuery.of(context).size.width *
-                                      0.075),
-                            ),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            (indiaData == null)
-                                ? Container(
-                                    height: 200,
-                                    width: 200,
-                                    child: Center(
-                                      child: SpinKitThreeBounce(
-                                        color: Colors.white,
-                                      ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : Center(
+                      child: Column(
+                        children: <Widget>[
+                          Text(
+                            'INDIA AT GLANCE',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.cyanAccent[100],
+                                fontWeight: FontWeight.w500,
+                                fontSize:
+                                    MediaQuery.of(context).size.width * 0.075),
+                          ),
+                          SizedBox(
+                            height: 15.0,
+                          ),
+                          (indiaData == null)
+                              ? Container(
+                                  height: 200,
+                                  width: 200,
+                                  child: Center(
+                                    child: SpinKitThreeBounce(
+                                      color: Colors.white,
                                     ),
-                                  )
-                                : Stack(
-                                    children: <Widget>[
-                                      PieChartIndia(indiaData),
-                                      Container(
-                                        height:
-                                            MediaQuery.of(context).size.width *
-                                                0.80,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.80,
-                                        //child: Icon(
-                                        //  FontAwesomeIcons.globeAmericas,
-                                        //  color: Colors.white54,
-                                        //  size:
-                                        //      MediaQuery.of(context).size.width *
-                                        //          0.55,
-                                        //),
-                                        child: Center(
-                                          child: Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.55,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.55,
-                                            child: Image.asset(
-                                              'assets/images/India.png',
-                                              height: 100,
-                                              width: 100,
-                                            ),
+                                  ),
+                                )
+                              : Stack(
+                                  children: <Widget>[
+                                    PieChartIndia(indiaData),
+                                    Container(
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              0.80,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.80,
+                                      child: Center(
+                                        child: Container(
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.55,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.55,
+                                          child: Image.asset(
+                                            'assets/images/India.png',
+                                            height: 100,
+                                            width: 100,
                                           ),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              child: Center(
-                                child: Column(
-                                  children: <Widget>[
-                                    IndiaData(
-                                      indiaData: indiaData,
-                                    ),
-                                    SizedBox(
-                                      height: 10.0,
-                                    ),
+                                      ),
+                                    )
                                   ],
                                 ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            child: Center(
+                              child: Column(
+                                children: <Widget>[
+                                  IndiaData(
+                                    indiaData: indiaData,
+                                  ),
+                                  SizedBox(
+                                    height: 10.0,
+                                  ),
+                                ],
                               ),
                             ),
-                            SizedBox(height: 15),
-                            indiaData == null ? SizedBox() : LinkIndia(),
-                            SizedBox(
-                              height: 10,
-                            ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: 15),
+                          indiaData == null ? SizedBox() : LinkIndia(),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        ],
                       ),
-              ],
-            ),
+                    ),
+            ],
           ),
-          //),
-          //),
         ),
+        //),
+        //),
       ),
-    );
+    )
+        //,
+        //)
+        ;
     ;
   }
 }
