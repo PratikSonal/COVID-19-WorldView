@@ -5,8 +5,8 @@ Track the international statistics of the pandemic. Get a detailed view of the n
 New: Added data for India's states and district details.
 
 ## Screenshots
-![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Content_World.PNG)
-![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Content_India.PNG)
+![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Content_World.png)
+![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Content_India.png)
 
 ## Attributes
 * Country-wise statistics
