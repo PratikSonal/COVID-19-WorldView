@@ -1,4 +1,5 @@
 ![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/HeadLine.PNG)
+![icon](DisplayAssets/HeadLine.PNG)
 # COVID-19 WORLDVIEW
 
 Track the international statistics of the pandemic. Get a detailed view of the number of comfirmed cases, recoveries, deaths, progression curves and other stats for each affect country.
