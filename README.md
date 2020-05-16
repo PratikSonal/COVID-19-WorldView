@@ -1,4 +1,3 @@
-![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/HeadLine.PNG)
 ![icon](DisplayAssets/HeadLine.PNG)
 # COVID-19 WORLDVIEW
 
@@ -7,10 +6,10 @@ Track the international statistics of the pandemic. Get a detailed view of the n
 New: Added data for India's states and district details.
 
 ## Screenshots
-![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Screenshot_1.png)
-![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Screenshot_2.png)
-![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Screenshot_3.png)
-![alt text](https://github.com/PratikSonal/COVID-19-WorldView/blob/master/DisplayAssets/Screenshot_4.png)
+![icon](DisplayAssets/Screenshot_1.png)
+![icon](DisplayAssets/Screenshot_2.png)
+![icon](DisplayAssets/Screenshot_3.png)
+![icon](DisplayAssets/Screenshot_4.png)
 
 ## Attributes
 * Country-wise statistics
