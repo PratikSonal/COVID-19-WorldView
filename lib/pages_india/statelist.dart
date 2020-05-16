@@ -1,5 +1,4 @@
 import 'package:covid19/pages_india/statedetails.dart';
-import 'package:covid19/pages_mod/secondpage.dart';
 import 'package:covid19/tabbar/tabbar1.dart';
 import 'package:covid19/tabbar/tabbar3.dart';
 import 'package:covid19/widgets_india/dynamicListIndia.dart';
@@ -76,7 +75,9 @@ class StatePageState extends State<StatePage> {
             //color: Color(0xff233656),
             //color: Color(0xff053f5e),
             color: Colors.transparent,
-            height: aspectRatio == 0.6 ? MediaQuery.of(context).size.height * 0.1 : MediaQuery.of(context).size.height * 0.07,
+            height: aspectRatio == 0.6
+                ? MediaQuery.of(context).size.height * 0.1
+                : MediaQuery.of(context).size.height * 0.07,
             child: Container(
               child: TextField(
                 style: TextStyle(
@@ -139,18 +140,22 @@ class StatePageState extends State<StatePage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {
-                          setState(() {
-                            SelectedStateDetailsState.counter = 0;
-                            stateName = suggestions[index]['state'].toString();
-                            stateCode =
-                                suggestions[index]['statecode'].toString();
-                            //stateMaxDetails = suggestions[index];
-                            //stateStackIndex = suggestions[index]['state'];
+                          Future.delayed(Duration(milliseconds: 5), () {
+                            setState(() {
+                              SelectedStateDetailsState.counter = 0;
+                              stateName =
+                                  suggestions[index]['state'].toString();
+                              stateCode =
+                                  suggestions[index]['statecode'].toString();
+                            });
                           });
-                          SecondPageState.tabBarController1.animateTo(2);
-                          FocusScope.of(context).requestFocus(new FocusNode());
-                          //FirstTabState.tabBarController1.animateTo(2);
-                          //print('verify' + suggestions[index]['state']);
+                          Future.delayed(Duration(milliseconds: 10), () {
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+                          });
+                          Future.delayed(Duration(milliseconds: 20), () {
+                            ThirdTabState.tabBarController1.animateTo(2);
+                          });
                         },
                         //() {
                         //  FocusScope.of(context)

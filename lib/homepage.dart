@@ -11,7 +11,7 @@ class HomePageState extends State<HomePage>
     with AutomaticKeepAliveClientMixin<HomePage> {
   static Future<Scaffold> getData() {
     var data1 =
-        fetch('http://corona.lmao.ninja/v2/all', 30, 1, 10, 'homepage', 5, 1);
+        fetch('http://corona.lmao.ninja/v2/all', 30, 1, 1, 'homepage', 5, 1);
     return data1;
   }
 

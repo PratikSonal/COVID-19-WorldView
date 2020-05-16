@@ -1,6 +1,4 @@
 import 'package:covid19/apiresources/apiStackChart.dart';
-import 'package:covid19/countrydetailsentrypage.dart';
-import 'package:covid19/pages_mod/firstpage.dart';
 import 'package:covid19/tabbar/tabbar1.dart';
 import 'package:covid19/widgets/dynamicList.dart';
 import 'package:flutter/material.dart';
@@ -23,22 +21,21 @@ class CountryPageState extends State<CountryPage> {
 
   static var countryMaxDetails, countryStackIndex, countryStack;
 
-  getStackData(var x) async {
-    countryStack = null;
-    countryStack = await fetchChartData(
-        'https://corona.lmao.ninja/v2/historical/$x',
-        30,
-        1,
-        1,
-        'stack$countryStackIndex',
-        1);
-    print('Hi' + countryStack.toString());
-    return countryStack;
-  }
-
   //String savename;
 
   fetchCountryData() {
+    getStackData(var x) async {
+      countryStack = null;
+      countryStack = await fetchChartData(
+          'https://corona.lmao.ninja/v2/historical/$x',
+          30,
+          1,
+          1,
+          'stack$countryStackIndex',
+          1);
+      return countryStack;
+    }
+
     setState(() {
       countryData = widget.data;
       suggestions = countryData;
@@ -142,26 +139,19 @@ class CountryPageState extends State<CountryPage> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                         onTap: () {
-                          setState(() {
-                            //savename = suggestions[index]['country'];
-                            countryMaxDetails = suggestions[index];
-                            //print('checkThis' + countryMaxDetails);
-                            countryStackIndex = suggestions[index]['country'];
-                            //getStackData(suggestions[index]['country']);
-                            //fetchChartData(
-                            //    'https://corona.lmao.ninja/historical/' +
-                            //        savename,
-                            //    30,
-                            //    0,
-                            //    0,
-                            //    savename,
-                            //    1);
-                            //print('rememberMe' + countryStackIndex);
+                          Future.delayed(Duration(milliseconds: 5), () {
+                            setState(() {
+                              countryMaxDetails = suggestions[index];
+                              countryStackIndex = suggestions[index]['country'];
+                            });
                           });
-
-                          FirstPageState.tabBarController1.animateTo(2);
-
-                          FocusScope.of(context).requestFocus(new FocusNode());
+                          Future.delayed(Duration(milliseconds: 10), () {
+                            FocusScope.of(context)
+                                .requestFocus(new FocusNode());
+                          });
+                          Future.delayed(Duration(milliseconds: 100), () {
+                            FirstTabState.tabBarController1.animateTo(2);
+                          });
 
                           //Navigator.push(
                           //  context,

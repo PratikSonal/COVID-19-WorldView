@@ -11,7 +11,6 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'tabbar/tabbar1.dart';
-import 'tabbar/tabbar2.dart';
 
 class MyApp extends StatefulWidget {
   @override

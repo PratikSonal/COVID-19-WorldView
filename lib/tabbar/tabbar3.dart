@@ -1,8 +1,12 @@
-import 'package:covid19/homepageIndia.dart';
-import 'package:covid19/pages_india/statedetails.dart';
-import 'package:covid19/statedetailsentrypage.dart';
-import 'package:covid19/stateentrypage.dart';
+import 'package:covid19/pages/drawermenu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
+
+import '../SelectCategory.dart';
+import '../homepageIndia.dart';
+import '../statedetailsentrypage.dart';
+import '../stateentrypage.dart';
 
 class ThirdTab extends StatefulWidget {
   @override
@@ -12,79 +16,110 @@ class ThirdTab extends StatefulWidget {
 class ThirdTabState extends State<ThirdTab>
     with SingleTickerProviderStateMixin {
   static TabController tabBarController1;
+  double preferredSize;
 
   void initState() {
     super.initState();
     tabBarController1 = TabController(length: 3, vsync: this);
   }
 
-  //void dispose() {
-  //  super.dispose();
-  //  tabBarController1.dispose();
-  //}
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(30),
-        child: Container(
-          height: 30,
-          color: Color(0xff00E5FF),
-          child: TabBar(
-            tabs: <Widget>[
-              Text(
-                'AT GLANCE',
-                style: TextStyle(color: Colors.black),
+    double aspectRatio = double.parse(
+        (MediaQuery.of(context).size.width / MediaQuery.of(context).size.height)
+            .toStringAsFixed(1));
+    preferredSize = aspectRatio == 0.6
+        ? MediaQuery.of(context).size.height * 0.1
+        : MediaQuery.of(context).size.height * 0.08;
+    return WillPopScope(
+      onWillPop: () {
+        if (tabBarController1.index == 0) {
+          //Navigator.push(context,CupertinoPageRoute(builder: (context) => SelectCategory(), ),);
+          Navigator.of(context).pop();
+        } else if (tabBarController1.index == 1) {
+          tabBarController1.animateTo(0);
+        } else if (tabBarController1.index == 2) {
+          tabBarController1.animateTo(1);
+        }
+      },
+      child: Scaffold(
+        appBar:
+            //PreferredSize(
+            //preferredSize:
+            //Size.fromHeight(MediaQuery.of(context).size.height * 0.06),
+            //child: Container(
+            //height: MediaQuery.of(context).size.height * 0.1,
+            //color: Color(0xff233656),
+            //color: Color(0xff14ffec),
+            //color: Color(0xff00adb5) ,
+            //color: Color(0xff00E5FF),
+            //color: Color(0xff49beb7),
+            //child:
+            PreferredSize(
+          preferredSize: Size.fromHeight(preferredSize),
+          child: AppBar(
+            elevation: 5,
+            title: Text(
+              'I N D I A',
+              style: TextStyle(
+                color: Colors.cyanAccent,
+                fontSize: MediaQuery.of(context).size.width * 0.07,
+                fontWeight: FontWeight.bold,
               ),
-              Text(
-                'STATES',
-                style: TextStyle(color: Colors.black),
-              ),
-              Text(
-                'DETAILS',
-                style: TextStyle(color: Colors.black),
-              )
+            ),
+            iconTheme: IconThemeData(color: Colors.cyan[100]),
+            actions: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.refresh),
+                  onPressed: () => Phoenix.rebirth(context))
             ],
-            controller: tabBarController1,
+            centerTitle: true,
+            bottom: TabBar(
+              indicatorWeight: 3,
+              indicatorColor: Colors.white,
+              tabs: <Widget>[
+                Container(
+                  height: 20,
+                  child: Text(
+                    'AT GLANCE',
+                    style: TextStyle(color: Colors.cyan[100]),
+                  ),
+                ),
+                Container(
+                  height: 20,
+                  child: Text(
+                    'STATES',
+                    style: TextStyle(color: Colors.cyan[100]),
+                  ),
+                ),
+                Container(
+                  height: 20,
+                  child: Text(
+                    'DETAILS',
+                    style: TextStyle(color: Colors.cyan[100]),
+                  ),
+                )
+              ],
+              controller: tabBarController1,
+            ),
+            backgroundColor: Color(0xff022c43), //Color(0xff00e0ff),
           ),
         ),
+        //),
+        //),
+        drawer: Drawer(
+          child: DrawerMenu(),
+        ),
+        body: TabBarView(
+          children: <Widget>[
+            HomePageIndia(),
+            StateLoadingPage(),
+            //Container(child: Text('Empty, for now :)')),
+            StateDetailsEntryPage(),
+          ],
+          controller: tabBarController1,
+        ),
       ),
-      body: TabBarView(
-        children: <Widget>[
-          HomePageIndia(),
-          //CountryLoadingPage(),
-          //Container(child: Text('Empty, for now :)')),
-          StateLoadingPage(),
-          //Container(child: Text('Empty, for now :)')),
-          StateDetailsEntryPage(),
-          //SelectedCountryDetails(),
-        ],
-        controller: tabBarController1,
-      ),
-      //bottomNavigationBar: Container(
-      //  height: 30,
-      //  child: Material(
-      //    color: Color(0xff233656),
-      //    child: TabBar(
-      //      tabs: <Widget>[
-      //        Text(
-      //          'AT GLANCE',
-      //          style: TextStyle(),
-      //        ),
-      //        Text(
-      //          'COUNTRIES',
-      //          style: TextStyle(),
-      //        ),
-      //        Text(
-      //          'DETAILS',
-      //          style: TextStyle(),
-      //        )
-      //      ],
-      //      controller: tabBarController1,
-      //    ),
-      //  ),
-      //),
     );
   }
 }

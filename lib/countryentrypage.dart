@@ -1,6 +1,5 @@
 import 'package:covid19/apiresources/apiTemplate.dart';
 import 'package:covid19/pages/loading.dart';
-import 'package:covid19/pages_mod/firstpage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,7 +11,7 @@ class CountryLoadingPage extends StatefulWidget {
 class _CountryLoadingPageState extends State<CountryLoadingPage>
     with AutomaticKeepAliveClientMixin<CountryLoadingPage> {
   Future<Scaffold> getData2() {
-    var data2 = fetch('http://corona.lmao.ninja/v2/countries', 30, 5, 10,
+    var data2 = fetch('http://corona.lmao.ninja/v2/countries', 30, 1, 1,
         'CountryLoadingPage', 5, 2);
     return data2;
   }

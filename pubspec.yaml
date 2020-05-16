@@ -33,7 +33,7 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   cached_network_image: ^2.1.0+1
   sembast: ^1.15.1
-  path_provider: 
+  path_provider: ^1.6.8
   bottom_navy_bar: ^5.4.0
   flutter_phoenix: ^0.1.0
   swipedetector: ^1.2.0

@@ -1,5 +1,4 @@
 import 'package:covid19/pages/drawermenu.dart';
-import 'package:covid19/pages_mod/firstpage.dart';
 import 'package:covid19/tabbar/tabbar1.dart';
 import 'package:covid19/tabbar/tabbar3.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 import 'myapp.dart';
-import 'pages_mod/secondpage.dart';
 
 class SelectCategory extends StatefulWidget {
   @override
@@ -166,7 +164,7 @@ class _SelectCategoryState extends State<SelectCategory>
                           onPressed: () => Navigator.push(
                             context,
                             CupertinoPageRoute(
-                              builder: (context) => FirstPage(),
+                              builder: (context) => FirstTab(),
                             ),
                           ),
                           //Navigator.push(context,PageRouteBuilder(pageBuilder: (context, animation1, animation2) => MyApp(),),),
@@ -232,7 +230,7 @@ class _SelectCategoryState extends State<SelectCategory>
                           onPressed: () => Navigator.push(
                             context,
                             CupertinoPageRoute(
-                              builder: (context) => SecondPage(),
+                              builder: (context) => ThirdTab(),
                             ),
                           ),
                           //Navigator.push(context,PageRouteBuilder(pageBuilder: (context, animation1, animation2) => MyApp(),),),

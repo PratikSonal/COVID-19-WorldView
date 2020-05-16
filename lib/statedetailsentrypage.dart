@@ -11,7 +11,7 @@ class StateDetailsEntryPage extends StatefulWidget {
 class _StateDetailsEntryPageState extends State<StateDetailsEntryPage>
     with AutomaticKeepAliveClientMixin {
   Future<Scaffold> getData3() {
-    var data3 = fetchIndia(30, 1, 10, 'India', 15, 3);
+    var data3 = fetchIndia(30, 1, 1, 'India', 15, 3);
     return data3;
   }
 

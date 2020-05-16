@@ -10,7 +10,7 @@ class StateLoadingPage extends StatefulWidget {
 class _StateLoadingPageState extends State<StateLoadingPage>
     with AutomaticKeepAliveClientMixin<StateLoadingPage> {
   Future<Scaffold> getData2() {
-    var data2 = fetchIndia(30, 1, 10, 'India', 15, 2);
+    var data2 = fetchIndia(30, 1, 1, 'India', 15, 2);
     return data2;
   }
 
